@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'alertloginpage.dart';
+import 'houseservicepage.dart';
 
 class Signinhome extends StatefulWidget {
   const Signinhome({Key? key}) : super(key: key);
@@ -161,12 +162,19 @@ class _SigninhomeState extends State<Signinhome> {
                             minimumSize:
                                 MaterialStateProperty.all<Size>(Size(330, 60))),
                         onPressed: () {},
-                        child: Text(
-                          "LOGIN",
-                          style: TextStyle(
-                              color: Color(0xff5ac18e),
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                              return HouseServicepage();
+                            },));
+                          },
+                          child: Text(
+                            "LOGIN",
+                            style: TextStyle(
+                                color: Color(0xff5ac18e),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                       SizedBox(
