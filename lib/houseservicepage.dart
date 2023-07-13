@@ -17,14 +17,9 @@ class _HouseServicepageState extends State<HouseServicepage> {
     "Washing Machine",
     "Refrigeator"
   ];
-  List<Image> serviceimage = [
-    Image(image: AssetImage('assetss/eletrical.png')),
-    Image(image: AssetImage('assetss/clening1.png')),
-    Image(image: AssetImage('assetss/plumping1.png')),
-    Image(image: AssetImage('assetss/carpentry1.png')),
-    Image(image: AssetImage('assetss/paint1.png')),
-    Image(image: AssetImage('assetss/washingmachine.png')),
-    Image(image: AssetImage('assetss/refragetor.jpg')),
+  List<String> serviceimage = ['assetss/eletrical.png', 'assetss/clening1.png','assetss/plumping1.png',
+    'assetss/carpentry1.png','assetss/paint1.png', 'assetss/washingmachine.png','assetss/refragetor.jpg',
+
   ];
   @override
   Widget build(BuildContext context) {
@@ -156,25 +151,16 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                       width: 100,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
-                                          border:
-
-                                              Border.all(color: Colors.black12),
-
-                                          boxShadow: [
-                                            BoxShadow(
+                                          border: Border.all(color: Colors.black12),
+                                          boxShadow: [BoxShadow(
                                               color: Colors.black38,
                                               blurRadius: 4,
                                               spreadRadius: 2,
-
-
                                             ),
                                           ],
-
+                                        image: DecorationImage(image: AssetImage(serviceimage[index]),fit: BoxFit.fill),
                                         shape: BoxShape.circle,
-
                                       ),
-
-                                      child: serviceimage[index],
 
                                     ),
                                     SizedBox(
@@ -182,7 +168,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                     ),
                                     Text(
 
-                                        services[index],
+                                      services[index],
                                       style: TextStyle(
                                         fontSize: 17,
                                         fontWeight: FontWeight.w500,
@@ -190,11 +176,15 @@ class _HouseServicepageState extends State<HouseServicepage> {
 
                                       ),
                                     ),
+
                                   ],
                                 );
                               },
                             ),
-                          )
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
                         ],
                       ),
                     )

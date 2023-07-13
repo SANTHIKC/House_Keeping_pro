@@ -158,7 +158,7 @@ class _SigninhomeState extends State<Signinhome> {
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15))),
+                                    borderRadius: BorderRadius.circular(10))),
                             minimumSize:
                                 MaterialStateProperty.all<Size>(Size(330, 60))),
                         onPressed: () {},
