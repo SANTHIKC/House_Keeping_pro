@@ -21,33 +21,37 @@ class _HouseServicepageState extends State<HouseServicepage> {
     'assetss/carpentry1.png','assetss/paint1.png', 'assetss/washingmachine.png','assetss/refragetor.jpg',
 
   ];
-  List<String>servicetype =['assetss/images/electrician_men.jpg',
+  List<String>servicetype=['assetss/images/electrician_men.jpg',
   'assetss/images/cleaninglady2.jpg','assetss/images/plumbingmen1.jpg',
-  'assetss/images/carpenterman1.jpg','assetss/images/painter13.jpg',
-  'assetss/images/washingmachingrepair1.jpg','assetss/images/fridgerepair1.jpg',];
+  'assetss/images/carpenterman1.jpg','assetss/images/painter13.jpg','assetss/images/fridgerepair.jpg',
+  'assetss/images/washingmachingrepair1.jpg'];
 
-  List<dynamic> servicename = [
+  List<String> servicename = [
     "Major Electrical Work",
     "Daily Cleaning",
     "Repair Service",
     "New Furniture Making",
-    "Installation Service",
+    "painting work",
     "Refrigerator Repair",
+    "Installation Service",
+
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding:  EdgeInsets.all(10),
                   child: Container(
-                    height: 260,
-                    width: 400,
+                    height: 269,
+                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -62,7 +66,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -85,7 +89,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 15),
+                              padding:  EdgeInsets.only(left: 15),
                               child: Text(
                                 'Hi Peter',
                                 style: TextStyle(
@@ -101,7 +105,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                           height: 10,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 15),
+                          padding:  EdgeInsets.only(left: 15),
                           child: Row(
                             children: [
                               Text(
@@ -150,9 +154,12 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding:  EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     "All Services",
                     style: TextStyle(
@@ -166,7 +173,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                   height: 15,
                 ),
                 Container(
-                  height: 150,
+                  height: 180,
                   child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -214,9 +221,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     },
                   ),
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+
                 Padding(padding: EdgeInsets.only(left:15),
                 child:Text("Popular Services", style:TextStyle(
                   fontSize: 30,
@@ -224,10 +229,10 @@ class _HouseServicepageState extends State<HouseServicepage> {
                   color: Colors.black.withOpacity(0.7),
                 ))),
                 SizedBox(
-                  height: 30,
+                  height: 22,
                 ),
                 Container(
-                  height: 300,
+                  height: 240,
                   child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -237,9 +242,9 @@ class _HouseServicepageState extends State<HouseServicepage> {
                         children: [
                           Container(
                             margin: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 15),
-                            height: 250,
-                            width: 250,
+                                vertical: 5, horizontal:15),
+                            height: 180,
+                            width: 180,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.black12),
@@ -249,28 +254,25 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                 spreadRadius: 2,
                               ),
                               ],
-                              image: DecorationImage(image: AssetImage(servicetype [index]),fit: BoxFit.fill),
+                              image: DecorationImage(image: AssetImage(servicetype[index]),fit: BoxFit.fill),
                               borderRadius: BorderRadius.all(Radius.circular(10))
                             ),
 
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
                           Row(
                             children: [
                               Text(servicename[index],
                                 style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
                                   color: Colors.black,
 
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 20,
                           ),
 
                         ],
@@ -278,11 +280,122 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     },
                   ),
                 ),
+                SizedBox(
+                  height: 15,
+                ),
+
+                Padding(padding: EdgeInsets.only(left:15),
+                    child:Text("Happiness Guarantee", style:TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.black.withOpacity(0.7),
+                    ))),
+                SizedBox(
+                  height: 25,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(255, 188, 0, 100),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(child: Icon(Icons.access_time_outlined,size: 30),),
+                      ),
+                      Padding(padding: EdgeInsets.only(left:18),
+                          child:Text("Happiness Guarantee", style:TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black.withOpacity(0.7),
+                          ))),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(255, 188, 0, 100),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(child: Icon(Icons.chat_bubble_outline,size: 30),),
+                      ),
+                      Padding(padding: EdgeInsets.only(left:18),
+                          child:Text("Live Support", style:TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black.withOpacity(0.7),
+                          ))),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(255, 188, 0, 100),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(child: Icon(Icons.monetization_on_outlined,size: 30),),
+                      ),
+                      Padding(padding: EdgeInsets.only(left:18),
+                          child:Text("Predefined Pricing", style:TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black.withOpacity(0.7),
+                          ))),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(255, 188, 0, 100),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(child: Icon(Icons.verified_user_outlined,size: 30),),
+                      ),
+                      Padding(padding: EdgeInsets.only(left:18),
+                          child:Text("Verified Professionals", style:TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black.withOpacity(0.7),
+                          ))),
+                    ],
+                  ),
+                ),
+
               ],
             ),
-
         ),
       ),
+
     );
   }
 }
