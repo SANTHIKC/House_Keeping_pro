@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'electricalpage.dart';
+
 class HouseServicepage extends StatefulWidget {
   const HouseServicepage({Key? key}) : super(key: key);
 
@@ -42,6 +44,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
     return Scaffold(
       appBar: AppBar(),
       resizeToAvoidBottomInset: false,
+
       body: SafeArea(
         child: SingleChildScrollView(
             child: Column(
@@ -240,24 +243,33 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                vertical: 5, horizontal:15),
-                            height: 180,
-                            width: 180,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.black12),
-                              boxShadow: [BoxShadow(
-                                color: Colors.black38,
-                                blurRadius: 4,
-                                spreadRadius: 2,
-                              ),
-                              ],
-                              image: DecorationImage(image: AssetImage(servicetype[index]),fit: BoxFit.fill),
-                              borderRadius: BorderRadius.all(Radius.circular(10))
-                            ),
+                          InkWell(
+                            onTap:(
+                                ){
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                return Electricalpage();
+                              },));
+                            },
 
+                            child: Container(
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 5, horizontal:15),
+                              height: 180,
+                              width: 180,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.black12),
+                                boxShadow: [BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 4,
+                                  spreadRadius: 2,
+                                ),
+                                ],
+                                image: DecorationImage(image: AssetImage(servicetype[index]),fit: BoxFit.fill),
+                                borderRadius: BorderRadius.all(Radius.circular(10))
+                              ),
+
+                            ),
                           ),
                           SizedBox(
                             height: 15,
@@ -394,6 +406,19 @@ class _HouseServicepageState extends State<HouseServicepage> {
               ],
             ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.library_books),
+            label: 'Booking',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined),
+            label: 'Profile',
+          ),
+        ],
       ),
 
     );

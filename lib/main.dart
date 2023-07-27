@@ -4,6 +4,7 @@ import 'package:house_keeping_pro/loginhomepage.dart';
 import 'package:house_keeping_pro/alertloginpage.dart';
 import 'package:house_keeping_pro/userregistration.dart';
 
+import 'electricalpage.dart';
 import 'employeregistration.dart';
 import 'houseservicepage.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:Signinhome (),
+      home:Signinhome(),
     );
   }
 }
