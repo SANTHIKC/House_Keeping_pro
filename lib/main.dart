@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:house_keeping_pro/loginhomepage.dart';
 
 import 'package:house_keeping_pro/alertloginpage.dart';
+import 'package:house_keeping_pro/paintingpage.dart';
+import 'package:house_keeping_pro/plumbingpage.dart';
 import 'package:house_keeping_pro/userregistration.dart';
 
+import 'carpentrypage.dart';
+import 'cleaningpage.dart';
 import 'electricalpage.dart';
 import 'employeregistration.dart';
 import 'houseservicepage.dart';
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:Signinhome(),
+      home:PaintingPage(),
     );
   }
 }
