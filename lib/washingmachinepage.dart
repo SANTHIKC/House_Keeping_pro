@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PaintingPage extends StatefulWidget {
-  const PaintingPage({Key? key}) : super(key: key);
+class WashingMachinePage extends StatefulWidget {
+  const WashingMachinePage({Key? key}) : super(key: key);
 
   @override
-  State<PaintingPage> createState() => _PaintingPageState();
+  State<WashingMachinePage> createState() => _WashingMachinePageState();
 }
 
-class _PaintingPageState extends State<PaintingPage> {
+class _WashingMachinePageState extends State<WashingMachinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +21,13 @@ class _PaintingPageState extends State<PaintingPage> {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/painter12.jpg", ),fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage( "assetss/images/washingmachinerepair23.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Text("Painting Services", style:TextStyle(
+              child: Text("Washing Machine", style:TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w800,
                 color: Colors.black.withOpacity(0.7),
@@ -52,7 +52,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Whitewash", style:TextStyle(
+                          Text("Installaton Service", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -82,7 +82,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Enamel Painting", style:TextStyle(
+                          Text("Noise Issue", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -112,7 +112,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Synthetic Rubber Painting", style:TextStyle(
+                          Text("Water not Drainig", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -142,7 +142,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Cement Painting", style:TextStyle(
+                          Text("Not Washing or Spinning", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -187,10 +187,10 @@ class _PaintingPageState extends State<PaintingPage> {
                   child:
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: Text("A Painter is a professional who helps prepare surfaces,"
-                        " mix paints for different needs, and apply them with brushes or"
-                        " rollers to fill in cracks or apply color on walls and other "
-                        "objects around a home, such as furniture pieces or doors..",
+                    child: Text("The working principle of a washing machine is "
+                        "centrifugation. Centrifugation is a separation process "
+                        "that uses the action of centrifugal force to promote "
+                        "accelerated settling of particles in a solid-liquid mixture.",
                         style:TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w900,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PaintingPage extends StatefulWidget {
-  const PaintingPage({Key? key}) : super(key: key);
+class RefrigeratorPage extends StatefulWidget {
+  const RefrigeratorPage({Key? key}) : super(key: key);
 
   @override
-  State<PaintingPage> createState() => _PaintingPageState();
+  State<RefrigeratorPage> createState() => _RefrigeratorPageState();
 }
 
-class _PaintingPageState extends State<PaintingPage> {
+class _RefrigeratorPageState extends State<RefrigeratorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +21,13 @@ class _PaintingPageState extends State<PaintingPage> {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/painter12.jpg", ),fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage( "assetss/images/fridgerepair.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Text("Painting Services", style:TextStyle(
+              child: Text("Refrigerator  Services", style:TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w800,
                 color: Colors.black.withOpacity(0.7),
@@ -52,7 +52,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Whitewash", style:TextStyle(
+                          Text("Less Cooling", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -82,7 +82,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Enamel Painting", style:TextStyle(
+                          Text("Water Leakages", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -112,7 +112,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Synthetic Rubber Painting", style:TextStyle(
+                          Text("Noise Issue", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -142,7 +142,7 @@ class _PaintingPageState extends State<PaintingPage> {
                   Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Cement Painting", style:TextStyle(
+                          Text("General Refrigerator Repair", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -187,10 +187,12 @@ class _PaintingPageState extends State<PaintingPage> {
                   child:
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: Text("A Painter is a professional who helps prepare surfaces,"
-                        " mix paints for different needs, and apply them with brushes or"
-                        " rollers to fill in cracks or apply color on walls and other "
-                        "objects around a home, such as furniture pieces or doors..",
+                    child: Text("A refrigerator, colloquially fridge, is a "
+                        "commercial and home appliance consisting of a thermally "
+                        "insulated compartment and a heat pump (mechanical, "
+                        "electronic or chemical) that transfers heat from its "
+                        "inside to its external environment so that its inside is "
+                        "cooled to a temperature below the room temperature.",
                         style:TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w900,

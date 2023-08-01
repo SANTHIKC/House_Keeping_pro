@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:house_keeping_pro/paintingpage.dart';
+import 'package:house_keeping_pro/plumbingpage.dart';
+import 'package:house_keeping_pro/refrigeratorpage.dart';
+import 'package:house_keeping_pro/washingmachinepage.dart';
 
-import 'electricalpage.dart';
+import 'package:house_keeping_pro/carpentrypage.dart';
+import 'package:house_keeping_pro/cleaningpage.dart';
+import 'package:house_keeping_pro/electricalpage.dart';
+
 
 class HouseServicepage extends StatefulWidget {
   const HouseServicepage({Key? key}) : super(key: key);
@@ -38,6 +45,14 @@ class _HouseServicepageState extends State<HouseServicepage> {
     "Installation Service",
 
   ];
+  List<dynamic>pagename=[
+  Electricalpage(),
+  CleaningPage(),
+  PlumbingPage(),
+  CarpentryPage(),
+  PaintingPage(),
+  RefrigeratorPage(),
+  WashingMachinePage(),];
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +262,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                             onTap:(
                                 ){
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                                return Electricalpage();
+                                return pagename[index];
                               },));
                             },
 
@@ -319,7 +334,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                         child: Center(child: Icon(Icons.access_time_outlined,size: 30),),
                       ),
                       Padding(padding: EdgeInsets.only(left:18),
-                          child:Text("Happiness Guarantee", style:TextStyle(
+                          child:Text("Fast Service", style:TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Colors.black.withOpacity(0.7),
