@@ -14,6 +14,8 @@ import 'package:house_keeping_pro/employeregistration.dart';
 import 'package:house_keeping_pro/houseservicepage.dart';
 import 'package:house_keeping_pro/washingmachinepage.dart';
 
+import 'package:house_keeping_pro/employee/userhomepage.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:HouseServicepage(),
+      home:UserHomePage(),
     );
   }
 }
