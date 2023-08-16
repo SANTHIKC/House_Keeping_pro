@@ -58,6 +58,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+
       resizeToAvoidBottomInset: false,
 
       body: SafeArea(
