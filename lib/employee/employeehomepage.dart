@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 class EmployeeHomePage extends StatefulWidget {
   const EmployeeHomePage({Key? key}) : super(key: key);
 
@@ -14,6 +16,10 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     return Scaffold(
       appBar: AppBar(),
       resizeToAvoidBottomInset: false,
+      drawer: Drawer(
+        child: Text(''),
+      ),
+
 
       body: SafeArea(
         child: ListView(
@@ -155,7 +161,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
 
                               Padding(
                                 padding: EdgeInsets.only(left: 25),
-                                child: Text( 'Service',style: TextStyle(
+                                child: Text( 'Electrician',style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold),),
@@ -164,6 +170,17 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                             ],
                           ),
 
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          Text( 'RS:350 /-',style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),),
                         ],
                       ),
                     ),
@@ -262,4 +279,5 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
 
     );
   }
+
 }

@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   table_calendar: ^3.0.9
   raised_buttons: ^0.0.2
+  lottie: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
   assets:
     - assetss/
     - assetss/images/
+    - assetss/animation/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

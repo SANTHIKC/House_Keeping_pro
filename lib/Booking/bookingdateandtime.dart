@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import 'bookingsummery.dart';
+
+
+
 class BookingDateandTime extends StatefulWidget {
   const BookingDateandTime({Key? key}) : super(key: key);
 
@@ -19,7 +23,9 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor:  Color(0xff5ac18e),
+      ),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -43,11 +49,15 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
             _isweekend ?SliverToBoxAdapter(
               child: Container(
                 alignment: Alignment.center,
-                child:  Text("weekend is not avalilable,please select another date", style:TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black.withOpacity(0.6),
-                )),
+                child:  Padding(
+                  padding: const EdgeInsets.all(10),
+
+                  child: Text("This date is not avalilable, please select another date", style:TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black.withOpacity(0.6),
+                  )),
+                ),
               ),
             ):
                 SliverGrid(delegate: SliverChildBuilderDelegate((context, index){
@@ -69,7 +79,7 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
                         ),
                         borderRadius: BorderRadius.circular(15),
                         color: _currentIndex==index
-                          ? Color(0x665ac18e):null,
+                          ? Color(0x665ac18e):null ,
                       ),
                       alignment: Alignment.center,
                       child: Text('${index + 9 }:00 ${index +9>11 ? "PM" :"AM"}',style: TextStyle(
@@ -78,8 +88,48 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
                       ),),
                     ),
                   );
-                } ), gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:4,childAspectRatio:1.5, )
-                )
+                },
+                childCount:8,
+                ), gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:4,childAspectRatio:1.5, )
+                ),
+
+            SliverToBoxAdapter(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 80),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(  Color(0x665ac18e),),
+                      shape: MaterialStateProperty.all<
+                          RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15))),
+                      minimumSize:
+                      MaterialStateProperty.all<Size>(Size(330, 60))
+
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return BookingSummery();
+                    },));
+
+                  },
+
+
+
+                  child: Text(
+                    "Booking Now",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
           ],
 
