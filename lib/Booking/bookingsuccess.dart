@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../houseservicepage.dart';
+
 class BookingSuccess extends StatefulWidget {
   const BookingSuccess({Key? key}) : super(key: key);
 
@@ -46,6 +48,41 @@ class _BookingSuccessState extends State<BookingSuccess> {
                       fontWeight: FontWeight.bold,
 
                     ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 80),
+              child: ElevatedButton(
+                style: ButtonStyle(
+
+                    backgroundColor:
+                    MaterialStateProperty.all<Color>(  Color(0x665ac18e),),
+                    shape: MaterialStateProperty.all<
+                        RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15))),
+                    minimumSize:
+                    MaterialStateProperty.all<Size>(Size(330, 60))
+
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return HouseServicepage();
+                  },));
+
+                },
+
+
+
+                child: Text(
+                  "back to home page",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+
                   ),
                 ),
               ),

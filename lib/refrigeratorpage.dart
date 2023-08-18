@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Booking/bookingdateandtime.dart';
+
 class RefrigeratorPage extends StatefulWidget {
   const RefrigeratorPage({Key? key}) : super(key: key);
 
@@ -220,7 +222,11 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
                       MaterialStateProperty.all<Size>(Size(330, 60))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return BookingDateandTime();
+                    },));
+                  },
                   child: Text(
                     "Book This Service",
                     style: TextStyle(

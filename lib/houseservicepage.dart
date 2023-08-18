@@ -60,6 +60,103 @@ class _HouseServicepageState extends State<HouseServicepage> {
       appBar: AppBar(),
 
       resizeToAvoidBottomInset: false,
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+
+              color:   Color(0xcc5ac18e),
+              width: double.infinity,
+              height: 300,
+              padding: EdgeInsets.only(top: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                    AssetImage('assetss/profilepic.jpg'),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'Hi Peter',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+
+                    ),
+                  ),
+                  Text(
+                    'peter@gmail.com',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text(
+                'Settings',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.share),
+              title: Text(
+                'Share',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.notification_add),
+              title: Text(
+                'Notification',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text(
+                'Logout',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
 
       body: SafeArea(
         child: SingleChildScrollView(

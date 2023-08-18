@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Booking/bookingdateandtime.dart';
+
 class WashingMachinePage extends StatefulWidget {
   const WashingMachinePage({Key? key}) : super(key: key);
 
@@ -218,7 +220,11 @@ class _WashingMachinePageState extends State<WashingMachinePage> {
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
                       MaterialStateProperty.all<Size>(Size(330, 60))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return BookingDateandTime();
+                    },));
+                  },
                   child: Text(
                     "Book This Service",
                     style: TextStyle(
