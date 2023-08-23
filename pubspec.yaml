@@ -38,6 +38,8 @@ dependencies:
   table_calendar: ^3.0.9
   raised_buttons: ^0.0.2
   lottie: ^2.6.0
+  image_picker: ^1.0.2
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

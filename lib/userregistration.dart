@@ -1,4 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserRegistration extends StatefulWidget {
   const UserRegistration({Key? key}) : super(key: key);
@@ -14,6 +19,67 @@ class _UserRegistrationState extends State<UserRegistration> {
   TextEditingController addresstextcontroller=TextEditingController();
   TextEditingController phonenotextcontroller=TextEditingController();
   var formkey = GlobalKey<FormState>();
+  File? pickedImage;
+
+  void imagePickerOption()
+  {
+    Get.bottomSheet(
+        SingleChildScrollView(
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0)
+            ),
+            child: Container(
+              color: Colors.white,
+              height: 250,
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      "Pic Image From",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton.icon(onPressed: (){
+                      pickImage(ImageSource.camera);
+                    }, icon: Icon(Icons.camera_alt), label:Text("Camera")),
+                    ElevatedButton.icon(onPressed: (){
+                      pickImage(ImageSource.gallery);
+                    }, icon: Icon(Icons.image), label:Text("Gallery")),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        )
+
+    );
+  }
+
+  pickImage(ImageSource imageType)async{
+    try{
+      final photo = await ImagePicker().pickImage(source: imageType);
+      if(photo==null) return;
+      final tempImage =File(photo.path);
+      setState(() {
+        pickedImage =tempImage;
+      });
+      Get.back();
+
+    }
+    catch(error){
+      debugPrint(error.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +92,40 @@ class _UserRegistrationState extends State<UserRegistration> {
               key: formkey,
               child: Column(
                 children: [
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            decoration:BoxDecoration(
+                              border: Border.all(width: 1),
+                              borderRadius: BorderRadius.all(Radius.circular(90),),
+                            ),
+                            child: ClipOval(
+
+                              child  :
+                              pickedImage !=null ?Image.file(pickedImage!,
+                                width:170,
+                                height: 170,
+                                fit: BoxFit.cover,) :
+
+                              Image.asset('assetss/profilepic.jpg'),
+                            ),
+                          ),
+                          Positioned(
+                              bottom: 0,
+                              right: 5,
+                              child: IconButton(onPressed: imagePickerOption,
+                                icon: Icon(Icons.add_a_photo,size: 30,)
+                                ,))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                    ],
+                  ),
                   Row(
                     children: [
                       Padding(
