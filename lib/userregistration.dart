@@ -218,7 +218,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      controller: nametextcontroller,
+                      controller: addresstextcontroller,
                       validator: (v) {
                         if (v!.isEmpty) {
                           return "enter your address";
@@ -244,7 +244,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      controller: passwordtextcontroller,
+                      controller: phonenotextcontroller,
                       validator: (o) {
                         if (o!.isEmpty)  {
                           return "enter Phone number";

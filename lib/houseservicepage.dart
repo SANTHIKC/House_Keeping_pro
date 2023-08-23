@@ -57,7 +57,9 @@ class _HouseServicepageState extends State<HouseServicepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor:  Color(0xff5ac18e),
+      ),
 
       resizeToAvoidBottomInset: false,
       drawer: Drawer(

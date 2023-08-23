@@ -7,6 +7,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'employeviewpage.dart';
+
+
+
 class EmployeeRegistration extends StatefulWidget {
   const EmployeeRegistration({Key? key}) : super(key: key);
 
@@ -20,6 +24,9 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   TextEditingController passwordtextcontroller=TextEditingController();
   TextEditingController addresstextcontroller=TextEditingController();
   TextEditingController phonenotextcontroller=TextEditingController();
+  TextEditingController experiencetextcontroller=TextEditingController();
+  TextEditingController servicetextcontroller=TextEditingController();
+
   var formkey = GlobalKey<FormState>();
   File? pickedImage;
 
@@ -220,7 +227,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      controller: nametextcontroller,
+                      controller: addresstextcontroller,
                       validator: (v) {
                         if (v!.isEmpty) {
                           return "enter your address";
@@ -246,7 +253,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      controller: passwordtextcontroller,
+                      controller: phonenotextcontroller,
                       validator: (o) {
                         if (o!.isEmpty)  {
                           return "enter Phone number";
@@ -275,7 +282,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      controller: nametextcontroller,
+                      controller: experiencetextcontroller,
                       validator: (v) {
                         if (v!.isEmpty) {
                           return "enter your experience";
@@ -300,7 +307,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      controller: nametextcontroller,
+                      controller: servicetextcontroller,
                       validator: (v) {
                         if (v!.isEmpty) {
                           return "enter your service type";
@@ -327,11 +334,14 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                           if(validate == false)
                           {
                             return;
-                          }
-                          else
-                          {
 
                           }
+                          else
+                            {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                return EmployeeViewpage();
+                              },));
+                            }
 
                         },
                         child: Text("Submit")),

@@ -129,35 +129,7 @@ class _BookingSummeryState extends State<BookingSummery> {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Text(
-                            "Booked Time",
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 18,
 
-
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Text(
-                            "7.00 AM - 8.00 AM",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-
-
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),
