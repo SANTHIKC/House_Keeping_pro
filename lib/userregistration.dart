@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserRegistration extends StatefulWidget {
@@ -23,45 +21,41 @@ class _UserRegistrationState extends State<UserRegistration> {
 
   void imagePickerOption()
   {
-    Get.bottomSheet(
-        SingleChildScrollView(
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0)
-            ),
-            child: Container(
-              color: Colors.white,
-              height: 250,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      "Pic Image From",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    ElevatedButton.icon(onPressed: (){
-                      pickImage(ImageSource.camera);
-                    }, icon: Icon(Icons.camera_alt), label:Text("Camera")),
-                    ElevatedButton.icon(onPressed: (){
-                      pickImage(ImageSource.gallery);
-                    }, icon: Icon(Icons.image), label:Text("Gallery")),
-                  ],
+    showModalBottomSheet(context: context, builder: (BuildContext context) {
+      return SizedBox(
+        height: 200,
+        child: Container(
+          color: Colors.white,
+          height: 250,
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  "Pic Image From",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
-              ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton.icon(onPressed: (){
+                  pickImage(ImageSource.camera);
+                }, icon: Icon(Icons.camera_alt), label:Text("Camera")),
+                ElevatedButton.icon(onPressed: (){
+                  pickImage(ImageSource.gallery);
+                }, icon: Icon(Icons.image), label:Text("Gallery")),
+              ],
             ),
           ),
-        )
+        ),
+      );
 
-    );
+
+    },);
   }
 
   pickImage(ImageSource imageType)async{
@@ -72,7 +66,7 @@ class _UserRegistrationState extends State<UserRegistration> {
       setState(() {
         pickedImage =tempImage;
       });
-      Get.back();
+
 
     }
     catch(error){

@@ -1,10 +1,10 @@
 
-
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:house_keeping_pro/appConstants/appConstants.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'employeviewpage.dart';
@@ -19,6 +19,8 @@ class EmployeeRegistration extends StatefulWidget {
 }
 
 class _EmployeeRegistrationState extends State<EmployeeRegistration> {
+
+
   TextEditingController nametextcontroller=TextEditingController();
   TextEditingController emailtextcontroller=TextEditingController();
   TextEditingController passwordtextcontroller=TextEditingController();
@@ -26,51 +28,68 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   TextEditingController phonenotextcontroller=TextEditingController();
   TextEditingController experiencetextcontroller=TextEditingController();
   TextEditingController servicetextcontroller=TextEditingController();
+  void  senddate()async
+  {
+   var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}employeeviewinsert.php"));
+   request.fields["name"]=nametextcontroller.text;
+   
+   
+   request.files.add(MultipartFile.fromBytes("photo", File(pickedImage!.path).readAsBytesSync(),filename: pickedImage!.path));
+
+
+  var response  =  await request.send();
+  if(response.statusCode ==200){
+    var body =await Response.fromStream(response);
+
+    print(body);
+
+  }
+  }
+
 
   var formkey = GlobalKey<FormState>();
   File? pickedImage;
 
   void imagePickerOption()
   {
-    Get.bottomSheet(
-      SingleChildScrollView(
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0),
-            topRight: Radius.circular(10.0)
-          ),
-          child: Container(
-            color: Colors.white,
-            height: 250,
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    "Pic Image From",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ElevatedButton.icon(onPressed: (){
-                    pickImage(ImageSource.camera);
-                  }, icon: Icon(Icons.camera_alt), label:Text("Camera")),
-                  ElevatedButton.icon(onPressed: (){
-                    pickImage(ImageSource.gallery);
-                  }, icon: Icon(Icons.image), label:Text("Gallery")),
-                ],
-              ),
+    showModalBottomSheet(context: context, builder: (BuildContext context) {
+      return SizedBox(
+        height: 200,
+        child: Container(
+          color: Colors.white,
+          height: 250,
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  "Pic Image From",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton.icon(onPressed: (){
+                  pickImage(ImageSource.camera);
+                }, icon: Icon(Icons.camera_alt), label:Text("Camera")),
+                ElevatedButton.icon(onPressed: (){
+                  pickImage(ImageSource.gallery);
+                }, icon: Icon(Icons.image), label:Text("Gallery")),
+              ],
             ),
           ),
         ),
-      )
+      );
 
-    );
+
+    },);
+
+
+
   }
 
   pickImage(ImageSource imageType)async{
@@ -81,7 +100,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
     setState(() {
       pickedImage =tempImage;
     });
-    Get.back();
+
 
     }
     catch(error){
@@ -339,7 +358,15 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                           else
                             {
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                                return EmployeeViewpage();
+                                return EmployeeViewpage(
+                                  name: nametextcontroller.text,
+                                  email: emailtextcontroller.text,
+                                  password: passwordtextcontroller.text,
+                                  address: addresstextcontroller.text,
+                                  phonenumber: phonenotextcontroller.text,
+                                  experience: experiencetextcontroller.text,
+                                  servicetype: servicetextcontroller.text,
+                                );
                               },));
                             }
 
