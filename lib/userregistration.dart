@@ -1,7 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'appConstants/appConstants.dart';
+import 'loginhomepage.dart';
 
 class UserRegistration extends StatefulWidget {
   const UserRegistration({Key? key}) : super(key: key);
@@ -16,6 +21,37 @@ class _UserRegistrationState extends State<UserRegistration> {
   TextEditingController passwordtextcontroller=TextEditingController();
   TextEditingController addresstextcontroller=TextEditingController();
   TextEditingController phonenotextcontroller=TextEditingController();
+
+  void  senddata()async
+  {
+    var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}veiwapiuser.php"));
+    request.fields["user_name"]=nametextcontroller.text;
+    request.fields["email"]=emailtextcontroller.text;
+    request.fields["password"]=passwordtextcontroller.text;
+    request.fields["address"]=addresstextcontroller.text;
+    request.fields["phone_number"]=phonenotextcontroller.text;
+
+    request.files.add(MultipartFile.fromBytes("photo", File(pickedImage!.path).readAsBytesSync(),filename: pickedImage!.path));
+
+
+    var response  =  await request.send();
+    if(response.statusCode ==200){
+      var gettngData =await Response.fromStream(response);
+      print(gettngData.body);
+      var userdata=jsonDecode(gettngData.body);
+      if(userdata["message"]=="Added")
+      {
+        print("suceessfully added");
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return Signinhome();
+        },));
+      }
+
+
+
+    }
+  }
+
   var formkey = GlobalKey<FormState>();
   File? pickedImage;
 
@@ -266,9 +302,9 @@ class _UserRegistrationState extends State<UserRegistration> {
                     child: ElevatedButton(
                         onPressed: () {
                           bool validate = formkey.currentState!.validate();
-                          if(validate == false)
+                          if(validate == true)
                           {
-                            return;
+                            senddata();
                           }
                           else
                           {

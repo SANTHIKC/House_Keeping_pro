@@ -1,4 +1,5 @@
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -7,7 +8,11 @@ import 'package:house_keeping_pro/appConstants/appConstants.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'employeviewpage.dart';
+
+
+import 'loginhomepage.dart';
+
+
 
 
 
@@ -28,20 +33,33 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   TextEditingController phonenotextcontroller=TextEditingController();
   TextEditingController experiencetextcontroller=TextEditingController();
   TextEditingController servicetextcontroller=TextEditingController();
+
   void  senddate()async
   {
    var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}employeeviewinsert.php"));
    request.fields["name"]=nametextcontroller.text;
-   
-   
+   request.fields["email"]=emailtextcontroller.text;
+   request.fields["password"]=passwordtextcontroller.text;
+   request.fields["address"]=addresstextcontroller.text;
+   request.fields["phone_number"]=phonenotextcontroller.text;
+   request.fields["experience"]=experiencetextcontroller.text;
+   request.fields["service_type"]=servicetextcontroller.text;
    request.files.add(MultipartFile.fromBytes("photo", File(pickedImage!.path).readAsBytesSync(),filename: pickedImage!.path));
 
 
   var response  =  await request.send();
   if(response.statusCode ==200){
-    var body =await Response.fromStream(response);
+    var gettngData =await Response.fromStream(response);
 
-    print(body);
+    print(gettngData.body);
+  var empdata=jsonDecode(gettngData.body);
+  if(empdata["message"]=="Added")
+    {
+      print("suceessfully added");
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return Signinhome();
+      },));
+    }
 
   }
   }
@@ -350,24 +368,17 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                     child: ElevatedButton(
                         onPressed: () {
                           bool validate = formkey.currentState!.validate();
-                          if(validate == false)
+                          if(validate == true)
                           {
-                            return;
+                            senddate();
+
+
+
 
                           }
                           else
                             {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                                return EmployeeViewpage(
-                                  name: nametextcontroller.text,
-                                  email: emailtextcontroller.text,
-                                  password: passwordtextcontroller.text,
-                                  address: addresstextcontroller.text,
-                                  phonenumber: phonenotextcontroller.text,
-                                  experience: experiencetextcontroller.text,
-                                  servicetype: servicetextcontroller.text,
-                                );
-                              },));
+
                             }
 
                         },
