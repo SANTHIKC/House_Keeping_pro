@@ -369,7 +369,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                             child: Container(
                               margin: EdgeInsets.symmetric(
                                   vertical: 5, horizontal:15),
-                              height: 180,
+                              height: 150,
                               width: 180,
                               decoration: BoxDecoration(
                                 color: Colors.white,

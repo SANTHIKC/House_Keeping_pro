@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 
 import 'alertloginpage.dart';
+import 'appConstants/appConstants.dart';
+import 'employee/employeehomepage.dart';
 import 'houseservicepage.dart';
 
 class Signinhome extends StatefulWidget {
@@ -15,6 +20,45 @@ class _SigninhomeState extends State<Signinhome> {
   TextEditingController usernametextcontroller = TextEditingController();
   TextEditingController passwordtextcontroller = TextEditingController();
 
+
+  postUserData() async {
+
+    var url = Uri.parse("${AppConstants.url}userlog.php ");
+    var body = {
+      "email": usernametextcontroller.text,
+      "password": passwordtextcontroller.text,
+    };
+
+
+    var response = await post(url, body:body);
+
+    if (response.statusCode == 200) {
+      print("Response body: ${response.body}");
+      var userdata = jsonDecode(response.body);
+      print(userdata["data"]);
+
+
+
+      if (userdata["data"] == "successful" && userdata["message"]["type"] == "user") {
+        print("suceessfully added");
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) {
+            return HouseServicepage();
+          },
+        ));
+        if(userdata["data"] == "successful" && userdata["message"]["type"] == "employee")
+          {
+            print("suceessfully added");
+          }
+      }
+      else
+        {
+          print("somthing wrong");
+        }
+
+    }
+
+  }
 
 
 
@@ -49,15 +93,28 @@ class _SigninhomeState extends State<Signinhome> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "house keeping Services"
-                        ,
+                        "HomeShine",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: 50,
+                        height: 10,
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                        height: 180,
+                        width: 180,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black12),
+                            image: DecorationImage(
+                                image: AssetImage('assetss/super.png'),
+                                fit: BoxFit.fill),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(100))),
                       ),
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +215,7 @@ class _SigninhomeState extends State<Signinhome> {
                       ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all<Color>( Colors.white),
+                                MaterialStateProperty.all<Color>(Colors.white),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -168,9 +225,8 @@ class _SigninhomeState extends State<Signinhome> {
                         onPressed: () {},
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                              return HouseServicepage();
-                            },));
+                            postUserData();
+
                           },
                           child: Text(
                             "LOGIN",
@@ -184,31 +240,43 @@ class _SigninhomeState extends State<Signinhome> {
                       SizedBox(
                         height: 10,
                       ),
-                     Row(
-                       children: [
-                         Text('Do you have an Account ?', style: TextStyle(
-                             color: Colors.white,
-                             fontSize: 15,
-                             fontWeight: FontWeight.bold),),
-                         InkWell(onTap: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                         return Alertloginpage();
-                           },));
-                         showDialog(context: context, builder: (BuildContext context) {
-                           return AlertDialog(
-                             title: Text("messege"),
-                             content: Text(" Do you want to register as a User or Employee "),
-                           );
-
-                         },);
-                         },
-                           child: Text( 'Register Now',
-                             style: TextStyle(
-                                 color: Colors.black38,
-                                 fontSize: 18,
-                                 fontWeight: FontWeight.bold),),
-                         )
-                       ],
-                     )
+                      Row(
+                        children: [
+                          Text(
+                            'Do you have an Account ?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) {
+                                  return Alertloginpage();
+                                },
+                              ));
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("messege"),
+                                    content: Text(
+                                        " Do you want to register as a User or Employee "),
+                                  );
+                                },
+                              );
+                            },
+                            child: Text(
+                              'Register Now',
+                              style: TextStyle(
+                                  color: Colors.black38,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -220,6 +288,3 @@ class _SigninhomeState extends State<Signinhome> {
     );
   }
 }
-
-
-
