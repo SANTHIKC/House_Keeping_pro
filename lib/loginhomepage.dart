@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
-import 'alertloginpage.dart';
-import 'appConstants/appConstants.dart';
-import 'employee/employeehomepage.dart';
-import 'houseservicepage.dart';
+import 'package:house_keeping_pro/alertloginpage.dart';
+import 'package:house_keeping_pro/appConstants/appConstants.dart';
+import 'package:house_keeping_pro/employee/employeehomepage.dart';
+import 'package:house_keeping_pro/houseservicepage.dart';
 
 class Signinhome extends StatefulWidget {
   const Signinhome({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _SigninhomeState extends State<Signinhome> {
 
   postUserData() async {
 
-    var url = Uri.parse("${AppConstants.url}userlog.php ");
+    var url = Uri.parse("${AppConstants.url}useremplog.php");
     var body = {
       "email": usernametextcontroller.text,
       "password": passwordtextcontroller.text,
@@ -46,11 +46,17 @@ class _SigninhomeState extends State<Signinhome> {
             return HouseServicepage();
           },
         ));
+      }
         if(userdata["data"] == "successful" && userdata["message"]["type"] == "employee")
           {
             print("suceessfully added");
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) {
+                return EmployeeHomePage();
+              },
+            ));
           }
-      }
+
       else
         {
           print("somthing wrong");

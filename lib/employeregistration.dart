@@ -46,9 +46,12 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
    request.fields["service_type"]=servicetextcontroller.text;
    request.files.add(MultipartFile.fromBytes("photo", File(pickedImage!.path).readAsBytesSync(),filename: pickedImage!.path));
 
-
+print(request);
   var response  =  await request.send();
+  print(response);
+
   if(response.statusCode ==200){
+
     var gettngData =await Response.fromStream(response);
 
     print(gettngData.body);
