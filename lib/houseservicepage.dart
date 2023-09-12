@@ -30,10 +30,10 @@ class _HouseServicepageState extends State<HouseServicepage> {
     'assetss/carpentry1.png','assetss/paint1.png', 'assetss/washingmachine.png','assetss/refragetor.jpg',
 
   ];
-  List<String>servicetype=['assetss/images/electrician_men.jpg',
-  'assetss/images/cleaninglady2.jpg','assetss/images/plumbingmen1.jpg',
-  'assetss/images/carpenterman1.jpg','assetss/images/painter13.jpg','assetss/images/fridgerepair.jpg',
-  'assetss/images/washingmachingrepair1.jpg'];
+  List<String>servicetype=['assetss/images/electrician1.jpg',
+  'assetss/images/cleaninglady2.jpg','assetss/images/plumber2.jpg',
+  'assetss/images/carpenter12.jpg','assetss/images/painter2.jpg','assetss/images/fridgerepair.jpg',
+  'assetss/images/washingmachine.jpg'];
 
   List<String> servicename = [
     "Major Electrical Work",

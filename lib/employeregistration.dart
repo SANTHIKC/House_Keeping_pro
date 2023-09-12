@@ -36,7 +36,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
 
   void  senddate()async
   {
-   var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}employeeviewinsert.php"));
+   var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}employeeinsertdata.php"));
    request.fields["name"]=nametextcontroller.text;
    request.fields["email"]=emailtextcontroller.text;
    request.fields["password"]=passwordtextcontroller.text;

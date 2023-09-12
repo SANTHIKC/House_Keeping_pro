@@ -24,7 +24,7 @@ class _UserRegistrationState extends State<UserRegistration> {
 
   void  senddata()async
   {
-    var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}veiwapiuser.php"));
+    var request =  MultipartRequest("POST",Uri.parse("${AppConstants.url}userinsertdata.php"));
     request.fields["user_name"]=nametextcontroller.text;
     request.fields["email"]=emailtextcontroller.text;
     request.fields["password"]=passwordtextcontroller.text;

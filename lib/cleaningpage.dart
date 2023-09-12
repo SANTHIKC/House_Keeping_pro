@@ -23,7 +23,7 @@ class _CleaningPageState extends State<CleaningPage> {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/cleaninglady1.jpg", ),fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage( "assetss/images/cleninglady1.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),

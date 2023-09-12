@@ -111,13 +111,13 @@ class _SigninhomeState extends State<Signinhome> {
                       Container(
                         margin:
                             EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                        height: 180,
-                        width: 180,
+                        height: 200,
+                        width: 200,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.black12),
                             image: DecorationImage(
-                                image: AssetImage('assetss/super.png'),
+                                image: AssetImage('assetss/homeshine.jpg'),
                                 fit: BoxFit.fill),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(100))),

@@ -23,7 +23,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/fridgerepair.jpg", ),fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage( "assetss/images/fridgerepair2.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),

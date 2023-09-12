@@ -25,7 +25,7 @@ class _ElectricalpageState extends State<Electricalpage> {
                width: 350,
                height: 350,
                decoration: BoxDecoration(shape: BoxShape.rectangle,
-                 image: DecorationImage(image: AssetImage( "assetss/images/electricianmen2.jpg", ),fit: BoxFit.contain),
+                 image: DecorationImage(image: AssetImage( "assetss/images/electrician2.jpg", ),fit: BoxFit.contain),
                ),
              ),
            ),

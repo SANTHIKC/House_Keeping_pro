@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
+import '../appConstants/appConstants.dart';
 
 
 
@@ -12,106 +17,130 @@ class EmployeeHomePage extends StatefulWidget {
 
 class _EmployeeHomePageState extends State<EmployeeHomePage> {
 
+  Future<dynamic> getdata() async {
+    final url = "${AppConstants.url}singleemployeedataview.php";
+    var response = await get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      var body = jsonDecode(response.body);
+      return body;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
-        child: Column(
-          children: [
-            Container(
+        child: SafeArea(
+          child: Column(
+            children: [
+              FutureBuilder(
+                future: getdata(),
+                builder: (context,snapshot) {
+                  if(snapshot.connectionState==ConnectionState.waiting)
+                  {
+                    return Center(child: CircularProgressIndicator(),);
+                  }
+                  if (snapshot.hasData) {
+                    return Container(
+                      color:   Color(0xcc5ac18e),
+                      width: double.infinity,
+                      height: 300,
+                      padding: EdgeInsets.only(top: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            radius: 50,
+                            backgroundImage:
+                            NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            snapshot.data["data"]["name"].toString(),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
 
-              color:   Color(0xcc5ac18e),
-              width: double.infinity,
-              height: 300,
-              padding: EdgeInsets.only(top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage:
-                    AssetImage('assetss/profilepic.jpg'),
+                            ),
+                          ),
+                          Text(
+                            snapshot.data["data"]["email"],
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  else
+                    {
+                      return Text("somthing went wrong");
+                    }
+                }
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text(
+                  'Profile',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+
                   ),
-                  SizedBox(
-                    height: 15,
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text(
+                  'Settings',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+
                   ),
-                  Text(
-                    'Hi Peter',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.share),
+                title: Text(
+                  'Share',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
 
-                    ),
                   ),
-                  Text(
-                    'peter@gmail.com',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.notification_add),
+                title: Text(
+                  'Notification',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
 
-                    ),
                   ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text(
-                'Profile',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-
                 ),
               ),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
 
+                  ),
                 ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.share),
-              title: Text(
-                'Share',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.notification_add),
-              title: Text(
-                'Notification',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text(
-                'Logout',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-
-                ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
 
@@ -122,81 +151,96 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
           children: [
             Padding(
               padding:  EdgeInsets.all(10),
-              child: Container(
-                height: 230,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0x665ac18e),
-                      Color(0x995ac18e),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:  EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage:
-                            AssetImage('assetss/profilepic.jpg'),
-                          ),
-                          Icon(
-                            Icons.notifications_outlined,
-                            color: Colors.black,
-                            size: 35,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.only(left: 15),
-                          child: Text(
-                            'Hi Peter',
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
+              child: FutureBuilder(
+                future: getdata(),
+                builder: (context,snapshot) {
+                  if(snapshot.connectionState==ConnectionState.waiting)
+                  {
+                    return Center(child: CircularProgressIndicator(),);
+                  }
+                  if (snapshot.hasData) {
+                    return Container(
+                      height: 230,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0x665ac18e),
+                            Color(0x995ac18e),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding:  EdgeInsets.only(left: 15),
-                      child: Row(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: Column(
                         children: [
-                          Text(
-                            'Have a Nice day ',
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500,
+                          Padding(
+                            padding:  EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage:
+                                  NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                ),
+                                Icon(
+                                  Icons.notifications_outlined,
+                                  color: Colors.black,
+                                  size: 35,
+                                ),
+                              ],
                             ),
                           ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.only(left: 15),
+                                child: Text(
+                                  snapshot.data["data"]["name"].toString(),
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only(left: 15),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Have a Nice day ',
+                                  style: TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+
+
                         ],
                       ),
-                    ),
-
-
-
-                  ],
-                ),
+                    );
+                  }
+                  else
+                    {
+                      return Text("somthing went wrong");
+                    }
+                }
               ),
             ),
             SizedBox(

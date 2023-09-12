@@ -23,7 +23,7 @@ class _WashingMachinePageState extends State<WashingMachinePage> {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/washingmachinerepair23.jpg", ),fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage( "assetss/images/washingmachine23.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),

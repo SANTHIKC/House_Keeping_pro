@@ -23,7 +23,7 @@ class _PaintingPageState extends State<PaintingPage> {
                 width: 350,
                 height: 350,
                 decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/painter12.jpg", ),fit: BoxFit.contain),
+                  image: DecorationImage(image: AssetImage( "assetss/images/painter.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),
