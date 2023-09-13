@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appConstants/appConstants.dart';
 
@@ -19,8 +20,13 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
 
   Future<dynamic> getdata() async {
     final url = "${AppConstants.url}singleemployeedataview.php";
-    var response = await get(Uri.parse(url));
+
+      SharedPreferences prefs =await SharedPreferences.getInstance();
+      String? emp_id = prefs.getString("id");
+
+    var response = await post(Uri.parse(url),body: {"emp_id":emp_id});
     if (response.statusCode == 200) {
+      print(response.body);
       var body = jsonDecode(response.body);
       return body;
     }
@@ -84,60 +90,69 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     }
                 }
               ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text(
-                  'Profile',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+              Column(
+                children: [
+                  ListTile(
+                    shape: Border.all(color: Colors.black12),
+                    leading: Icon(Icons.person),
+                    title: Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
 
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text(
-                  'Settings',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+                  ListTile(
+                    shape: Border.all(color: Colors.black12),
+                    leading: Icon(Icons.settings),
+                    title: Text(
+                      'Settings',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
 
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.share),
-                title: Text(
-                  'Share',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+                  ListTile(
+                    shape: Border.all(color: Colors.black12),
+                    leading: Icon(Icons.share),
+                    title: Text(
+                      'Share',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
 
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.notification_add),
-                title: Text(
-                  'Notification',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+                  ListTile(
+                    shape: Border.all(color: Colors.black12),
+                    leading: Icon(Icons.notification_add),
+                    title: Text(
+                      'Notification',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
 
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.logout),
-                title: Text(
-                  'Logout',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+                  ListTile(
+                    shape: Border.all(color: Colors.black12),
+                    leading: Icon(Icons.logout),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
 
+                      ),
+                    ),
                   ),
-                ),
+                ],
               )
             ],
           ),

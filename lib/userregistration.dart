@@ -41,7 +41,7 @@ class _UserRegistrationState extends State<UserRegistration> {
       var userdata=jsonDecode(gettngData.body);
       if(userdata["message"]=="Added")
       {
-        print("suceessfully added");
+        print("userregisterdata added");
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return Signinhome();
         },));

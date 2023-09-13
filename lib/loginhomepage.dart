@@ -8,6 +8,7 @@ import 'package:house_keeping_pro/alertloginpage.dart';
 import 'package:house_keeping_pro/appConstants/appConstants.dart';
 import 'package:house_keeping_pro/employee/employeehomepage.dart';
 import 'package:house_keeping_pro/houseservicepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signinhome extends StatefulWidget {
   const Signinhome({Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class _SigninhomeState extends State<Signinhome> {
     };
 
 
+
     var response = await post(url, body:body);
 
     if (response.statusCode == 200) {
@@ -39,8 +41,15 @@ class _SigninhomeState extends State<Signinhome> {
 
 
 
+
+
       if (userdata["data"] == "successful" && userdata["message"]["type"] == "user") {
-        print("suceessfully added");
+        SharedPreferences sharedpref =await SharedPreferences.getInstance();
+        String log_id= userdata["message"]["log_id"];
+        sharedpref.setString("id",log_id);
+
+        print("employeedata added");
+
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) {
             return HouseServicepage();
@@ -49,7 +58,11 @@ class _SigninhomeState extends State<Signinhome> {
       }
         if(userdata["data"] == "successful" && userdata["message"]["type"] == "employee")
           {
-            print("suceessfully added");
+            SharedPreferences sharedpref =await SharedPreferences.getInstance();
+            String log_id= userdata["message"]["log_id"];
+            sharedpref.setString("id",log_id);
+
+            print("userdata added");
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) {
                 return EmployeeHomePage();

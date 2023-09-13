@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:house_keeping_pro/paintingpage.dart';
 import 'package:house_keeping_pro/plumbingpage.dart';
@@ -7,6 +9,10 @@ import 'package:house_keeping_pro/washingmachinepage.dart';
 import 'package:house_keeping_pro/carpentrypage.dart';
 import 'package:house_keeping_pro/cleaningpage.dart';
 import 'package:house_keeping_pro/electricalpage.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'appConstants/appConstants.dart';
 
 
 class HouseServicepage extends StatefulWidget {
@@ -54,6 +60,21 @@ class _HouseServicepageState extends State<HouseServicepage> {
   RefrigeratorPage(),
   WashingMachinePage(),];
 
+
+  Future<dynamic> getuserdata() async {
+    final url = "${AppConstants.url}singleuserdataview.php";
+
+    SharedPreferences prefs =await SharedPreferences.getInstance();
+    String? user_id = prefs.getString("id");
+
+    var response = await post(Uri.parse(url),body: {"user_id":user_id});
+    if (response.statusCode == 200) {
+      print(response.body);
+      var body = jsonDecode(response.body);
+      return body;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,41 +86,56 @@ class _HouseServicepageState extends State<HouseServicepage> {
       drawer: Drawer(
         child: Column(
           children: [
-            Container(
-
-              color:   Color(0xcc5ac18e),
-              width: double.infinity,
-              height: 300,
-              padding: EdgeInsets.only(top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage:
-                    AssetImage('assetss/profilepic.jpg'),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    'Hi Peter',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-
+            FutureBuilder(
+              future: getuserdata(),
+              builder: (context ,snapshot) {
+                if(snapshot.connectionState==ConnectionState.waiting)
+                  {
+                    return Center(child: CircularProgressIndicator(),);
+                  }
+                if (snapshot.hasData) {
+                  return Container(
+                  
+                    color:   Color(0xcc5ac18e),
+                    width: double.infinity,
+                    height: 300,
+                    padding: EdgeInsets.only(top: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                          NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          snapshot.data["data"]["user_name"].toString(),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                  
+                          ),
+                        ),
+                        Text(
+                          snapshot.data["data"]["email"].toString(),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                  
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Text(
-                    'peter@gmail.com',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-
-                    ),
-                  ),
-                ],
-              ),
+                  );
+                }
+                else
+                  {
+                    return Text("somthing went wrong");
+                  }
+              }
             ),
             ListTile(
               leading: Icon(Icons.person),
