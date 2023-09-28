@@ -94,15 +94,7 @@ class _SigninhomeState extends State<Signinhome> {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                      Color(0x665ac18e),
-                      Color(0x995ac18e),
-                      Color(0xcc5ac18e),
-                      Color(0xff5ac18e),
-                    ])),
+                    ),
                 child: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(
                     horizontal: 25,
@@ -114,7 +106,7 @@ class _SigninhomeState extends State<Signinhome> {
                       Text(
                         "HomeShine",
                         style: TextStyle(
-                            color: Colors.white,
+                            color:  Color(0xff5ac18e),
                             fontSize: 40,
                             fontWeight: FontWeight.bold),
                       ),
@@ -141,7 +133,7 @@ class _SigninhomeState extends State<Signinhome> {
                             Text(
                               "Username",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color:  Color(0x995ac18e),
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -189,7 +181,7 @@ class _SigninhomeState extends State<Signinhome> {
                             Text(
                               "Password",
                               style: TextStyle(
-                                  color: Colors.white,
+                                  color: Color(0x995ac18e),
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -234,7 +226,7 @@ class _SigninhomeState extends State<Signinhome> {
                       ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
+                                MaterialStateProperty.all<Color>(Color(0x665ac18e),),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -250,7 +242,7 @@ class _SigninhomeState extends State<Signinhome> {
                           child: Text(
                             "LOGIN",
                             style: TextStyle(
-                                color: Color(0xff5ac18e),
+                                color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -264,7 +256,7 @@ class _SigninhomeState extends State<Signinhome> {
                           Text(
                             'Do you have an Account ?',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black54,
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -289,7 +281,7 @@ class _SigninhomeState extends State<Signinhome> {
                             child: Text(
                               'Register Now',
                               style: TextStyle(
-                                  color: Colors.black38,
+                                  color: Colors.black87,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),

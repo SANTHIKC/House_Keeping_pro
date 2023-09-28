@@ -203,109 +203,97 @@ class _HouseServicepageState extends State<HouseServicepage> {
               children: [
                 Padding(
                   padding:  EdgeInsets.all(10),
-                  child: Container(
-                    height: 269,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0x665ac18e),
-                          Color(0x995ac18e),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:  EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundImage:
-                                AssetImage('assetss/profilepic.jpg'),
-                              ),
-                              Icon(
-                                Icons.notifications_outlined,
-                                color: Colors.black,
-                                size: 35,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.only(left: 15),
-                              child: Text(
-                                'Hi Peter',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding:  EdgeInsets.only(left: 15),
-                          child: Row(
-                            children: [
-                              Text(
-                                'What Service do you need?',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
+                  child: FutureBuilder(
+                    future: getuserdata(),
+                    builder: (context,snapshot) {
+                      if(snapshot.connectionState==ConnectionState.waiting)
+                      {
+                        return Center(child: CircularProgressIndicator(),);
+                      }
 
-                        Container(
-                          margin: EdgeInsets.only(top: 15, bottom: 20),
+                      if (snapshot.hasData)
+                      {
+                        return Container(
+                          height: 230,
                           width: MediaQuery.of(context).size.width,
-                          height: 60,
-                          alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(25),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                )
-                              ]),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Search here...",
-                              hintStyle: TextStyle(
-                                color: Colors.black.withOpacity(0.5),
-                              ),
-                              prefixIcon: Icon(
-                                Icons.search,
-                                size: 25,
-                              ),
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0x665ac18e),
+                                Color(0x995ac18e),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
                             ),
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
-                        ),
-                      ],
-                    ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundImage:
+                                      NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                    ),
+                                    Icon(
+                                      Icons.notifications_outlined,
+                                      color: Colors.black,
+                                      size: 35,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding:  EdgeInsets.only(left: 15),
+                                    child: Text(
+                                      snapshot.data["data"]["user_name"].toString(),
+                                      style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding:  EdgeInsets.only(left: 15),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'What Service do you need?',
+                                      style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+
+                            ],
+                          ),
+                        );
+                      }
+                      else
+                        {
+                          return Text("somthing went wrong");
+                        }
+                    }
                   ),
                 ),
                 SizedBox(

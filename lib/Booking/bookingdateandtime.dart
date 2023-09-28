@@ -15,6 +15,8 @@ class BookingDateandTime extends StatefulWidget {
 }
 
 class _BookingDateandTimeState extends State<BookingDateandTime> {
+
+
   CalendarFormat _format = CalendarFormat.month;
   DateTime _focusdate = DateTime.now();
   DateTime _currentdate = DateTime.now();
@@ -64,7 +66,10 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
                   ),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return BookingSummery();
+                      return BookingSummery(
+
+
+                      );
                     },));
 
                   },
