@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'bookingsummery.dart';
@@ -8,13 +9,17 @@ import 'bookingsummery.dart';
 
 
 class BookingDateandTime extends StatefulWidget {
+
+
   const BookingDateandTime({Key? key}) : super(key: key);
+
 
   @override
   State<BookingDateandTime> createState() => _BookingDateandTimeState();
 }
 
 class _BookingDateandTimeState extends State<BookingDateandTime> {
+
 
 
   CalendarFormat _format = CalendarFormat.month;
@@ -24,6 +29,7 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
   bool _isweekend = false;
   bool _dateselected = false;
   bool _timeselected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,9 +71,12 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
 
                   ),
                   onPressed: () {
+                    DateTime _focusdate =DateTime.now();
+                     var date = DateTime(_focusdate.year, _focusdate.month, _focusdate.day);
+
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                       return BookingSummery(
-
+                        focusedDay: _focusdate,
 
                       );
                     },));

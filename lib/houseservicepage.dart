@@ -42,13 +42,13 @@ class _HouseServicepageState extends State<HouseServicepage> {
   'assetss/images/washingmachine.jpg'];
 
   List<String> servicename = [
-    "Major Electrical Work",
-    "Daily Cleaning",
-    "Repair Service",
-    "New Furniture Making",
+    " Electrical Work",
+    " Cleaning ",
+    "Plumbing Service",
+    " Furniture Work",
     "painting work",
-    "Refrigerator Repair",
-    "Installation Service",
+    "Refrigerator Service",
+    "Washingmachine Service",
 
   ];
   List<dynamic>pagename=[

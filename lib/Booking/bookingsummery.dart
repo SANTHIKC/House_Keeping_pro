@@ -3,15 +3,19 @@ import 'package:flutter/material.dart';
 import 'bookingsuccess.dart';
 
 class BookingSummery extends StatefulWidget {
-  const BookingSummery({Key? key}) : super(key: key);
+  final  focusedDay;
+
+   BookingSummery({required this.focusedDay}) ;
 
   @override
   State<BookingSummery> createState() => _BookingSummeryState();
 }
 
 class _BookingSummeryState extends State<BookingSummery> {
+
   @override
   Widget build(BuildContext context) {
+    DateTime focusedDay = widget.focusedDay;
     return Scaffold(
       appBar: AppBar(
         backgroundColor:  Color(0xff5ac18e),
@@ -118,7 +122,7 @@ class _BookingSummeryState extends State<BookingSummery> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            "19-08-2023",
+                            "${widget.focusedDay.year}-${widget.focusedDay.month}-${widget.focusedDay.day}",
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
