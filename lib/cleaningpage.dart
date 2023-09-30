@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Booking/bookingdateandtime.dart';
 
@@ -10,6 +11,12 @@ class CleaningPage extends StatefulWidget {
 }
 
 class _CleaningPageState extends State<CleaningPage> {
+  List<String>cleaning=[
+    'Commercial cleaning',
+    'Window cleaner',
+    'Upholstery cleaning',
+    'Floor cleaning',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -220,7 +227,11 @@ class _CleaningPageState extends State<CleaningPage> {
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
                       MaterialStateProperty.all<Size>(Size(330, 60))),
-                  onPressed: () {
+                  onPressed: () async{
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    prefs.setStringList('selectedServiceList',cleaning );
+
+
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                       return BookingDateandTime();
                     },));

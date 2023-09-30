@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'bookingsummery.dart';
@@ -29,6 +32,7 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
   bool _isweekend = false;
   bool _dateselected = false;
   bool _timeselected = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +74,26 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
                       MaterialStateProperty.all<Size>(Size(330, 60))
 
                   ),
-                  onPressed: () {
-                    DateTime _focusdate =DateTime.now();
-                     var date = DateTime(_focusdate.year, _focusdate.month, _focusdate.day);
+                  onPressed: () async{
+
+                     var date = DateTime(  _focusdate.year,_focusdate.month,_focusdate.day,);
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+
+                   String selectedServiceName = prefs.getString('selectedServiceName')??"";
+                    print(selectedServiceName);
+                   List<String>? selectedServices = prefs.getStringList('selectedServiceList');
+
+
+
+
 
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                       return BookingSummery(
                         focusedDay: _focusdate,
+                        selectedService: selectedServiceName,
+                        selectedServicelistname: selectedServices!,
+
 
                       );
                     },));

@@ -45,7 +45,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
     " Electrical Work",
     " Cleaning ",
     "Plumbing Service",
-    " Furniture Work",
+    " Carpentry Work",
     "painting work",
     "Refrigerator Service",
     "Washingmachine Service",
@@ -61,6 +61,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
   WashingMachinePage(),];
 
 
+
   Future<dynamic> getuserdata() async {
     final url = "${AppConstants.url}singleuserdataview.php";
 
@@ -74,6 +75,9 @@ class _HouseServicepageState extends State<HouseServicepage> {
       return body;
     }
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -321,6 +325,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: services.length,
                     itemBuilder: (context, index) {
+
                       return Column(
                         children: [
                           Container(
@@ -384,7 +389,11 @@ class _HouseServicepageState extends State<HouseServicepage> {
                         children: [
                           InkWell(
                             onTap:(
-                                ){
+                                )
+                            async{
+                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                              prefs.setString('selectedServiceName', servicename[index]);
+
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                                 return pagename[index];
                               },));
