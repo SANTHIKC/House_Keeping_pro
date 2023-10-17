@@ -31,6 +31,23 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
       return body;
     }
   }
+
+  Future<dynamic> getuserdata() async {
+    final url = "${AppConstants.url}booking.php";
+
+    SharedPreferences prefs =await SharedPreferences.getInstance();
+    String? user_id = prefs.getString("id");
+
+    var response = await post(Uri.parse(url),body: {"user_id":user_id});
+    if (response.statusCode == 200) {
+      print(response.body);
+      var body = jsonDecode(response.body);
+      return body;
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +89,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
 
                             ),
                           ),
+
                           Text(
                             snapshot.data["data"]["email"],
                             style: TextStyle(
@@ -276,134 +294,150 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
             SizedBox(
               height: 22,
             ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Container(
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child:  Column(
-                  children: [
-                    SizedBox(
-                      height: 18,
+            FutureBuilder(
+              future: getuserdata(),
+              builder: (context,snapshot) {
+                if(snapshot.connectionState==ConnectionState.waiting)
+                {
+                  return Center(child: CircularProgressIndicator(),);
+                }
+                if (snapshot.hasData ) {
+                  return Container(
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    child:  Column(
+                      children: [
+                        SizedBox(
+                          height: 18,
+                        ),
 
-                    Padding(
-                      padding:  EdgeInsets.all(8.0),
-                      child: Row(
+                        Padding(
+                          padding:  EdgeInsets.all(8.0),
+                          child: Row(
 
-                        children: [
-
-                          CircleAvatar(
-                            radius: 25,
-                            backgroundImage:
-                            AssetImage('assetss/profilepic.jpg'),
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text('Name',style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),),
-                              SizedBox(
-                                height: 8,
-                              ),
 
-                              Padding(
-                                padding: EdgeInsets.only(left: 25),
-                                child: Text( 'Electrician',style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),),
+                              CircleAvatar(
+                                radius: 25,
+                                backgroundImage:
+                                NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 25),
+                                    child: Text( snapshot.data["data"]["user_id"].toString(),
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 25),
+                                    child: Text( snapshot.data["data"]["name"].toString(),style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),),
+                                  ),
+
+                                ],
                               ),
 
                             ],
                           ),
-
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Text( 'RS:350 /-',style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Text( 'date and time',style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Text( 'address & Phone number',style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all<Color>(Color(0xff5ac18e)),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10))),
-                                  minimumSize:
-                                  MaterialStateProperty.all<Size>(Size(150, 60))),
-                              onPressed: () {
-
-                          }, child: Text("Accept",style: TextStyle(color: Colors.black),)),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10),
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.white60),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10))),
-                                  minimumSize:
-                                  MaterialStateProperty.all<Size>(Size(150, 60))),
-                              onPressed: () {
+                          child: Row(
+                            children: [
+                              Text( snapshot.data["data"]["service_type"].toString(),style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),),
+                            ],
+                          ),
+                        ),
 
-                              }, child: Text("Reject",style: TextStyle(color: Colors.black),)),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text( 'date',style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),),
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Text( 'address & Phone number',style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                      MaterialStateProperty.all<Color>(Color(0xff5ac18e)),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10))),
+                                      minimumSize:
+                                      MaterialStateProperty.all<Size>(Size(150, 60))),
+                                  onPressed: () {
+
+                              }, child: Text("Accept",style: TextStyle(color: Colors.black),)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                      MaterialStateProperty.all<Color>(Colors.white60),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10))),
+                                      minimumSize:
+                                      MaterialStateProperty.all<Size>(Size(150, 60))),
+                                  onPressed: () {
+
+                                  }, child: Text("Reject",style: TextStyle(color: Colors.black),)),
+                            )
+                          ],
                         )
-                      ],
-                    )
 
-                  ],
-                ),
-              ),
+                      ],
+                    ),
+                  );
+                }
+                else
+                {
+                  return Text("somthing went wrong");
+                }
+              }
             ),
             SizedBox(
               height: 30,
