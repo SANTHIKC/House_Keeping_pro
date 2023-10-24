@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Booking/bookingdateandtime.dart';
+import '../booking/bookingdateandtime.dart';
 
 class RefrigeratorPage extends StatefulWidget {
   const RefrigeratorPage({Key? key}) : super(key: key);
@@ -11,14 +11,14 @@ class RefrigeratorPage extends StatefulWidget {
 }
 
 class _RefrigeratorPageState extends State<RefrigeratorPage> {
-  List<String>refrigerator=[
-    'Less Cooling',
-    'Water Leakages',
-    'Noise Issue',
-    'General Refrigerator Repair',
-
-
-  ];
+  // List<String>refrigerator=[
+  //   'Less Cooling',
+  //   'Water Leakages',
+  //   'Noise Issue',
+  //   'General Refrigerator Repair',
+  //
+  //
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
               child: Container(
                 width: 350,
                 height: 350,
-                decoration: BoxDecoration(shape: BoxShape.rectangle,
+                decoration: const BoxDecoration(shape: BoxShape.rectangle,
                   image: DecorationImage(image: AssetImage( "assetss/images/fridgerepair2.jpg", ),fit: BoxFit.contain),
                 ),
               ),
@@ -44,7 +44,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 color: Colors.black.withOpacity(0.7),
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -55,12 +55,12 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
                           Text("Less Cooling", style:TextStyle(
@@ -74,7 +74,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -85,12 +85,12 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
                           Text("Water Leakages", style:TextStyle(
@@ -104,7 +104,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -115,12 +115,12 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
                           Text("Noise Issue", style:TextStyle(
@@ -134,7 +134,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -145,12 +145,12 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
                           Text("General Refrigerator Repair", style:TextStyle(
@@ -164,11 +164,11 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
+            const Padding(
+              padding: EdgeInsets.only(left: 30),
               child: Row(
                 children: [
 
@@ -189,15 +189,15 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Padding(padding: EdgeInsets.only(left:18),
+            Padding(padding: const EdgeInsets.only(left:18),
                 child:Container(
                   height: 150,
                   child:
-                  Padding(
-                    padding: const EdgeInsets.all(10),
+                  const Padding(
+                    padding: EdgeInsets.all(10),
                     child: Text("A refrigerator, colloquially fridge, is a "
                         "commercial and home appliance consisting of a thermally "
                         "insulated compartment and a heat pump (mechanical, "
@@ -214,7 +214,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
 
 
                 )),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Container(
@@ -224,23 +224,23 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(  Color(0x665ac18e),),
+                      MaterialStateProperty.all<Color>(  const Color(0x665ac18e),),
                       shape: MaterialStateProperty.all<
                           RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
-                      MaterialStateProperty.all<Size>(Size(330, 60))),
-                  onPressed: () async{
+                      MaterialStateProperty.all<Size>(const Size(330, 60))),
+                  onPressed: () {
 
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setStringList('selectedServiceList',refrigerator );
+                    // SharedPreferences prefs = await SharedPreferences.getInstance();
+                    // prefs.setStringList('selectedServiceList',refrigerator );
 
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return BookingDateandTime();
+                      return const BookingDateandTime();
                     },));
                   },
-                  child: Text(
+                  child: const Text(
                     "Book This Service",
                     style: TextStyle(
                         color: Colors.white,
@@ -251,7 +251,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
               ),
 
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
 

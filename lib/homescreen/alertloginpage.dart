@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:house_keeping_pro/userregistration.dart';
+import 'package:house_keeping_pro/user/service_cat/userregistration.dart';
 
-import 'employeregistration.dart';
+import '../employee/employeregistration.dart';
 
 class Alertloginpage extends StatefulWidget {
   const Alertloginpage({Key? key}) : super(key: key);
@@ -13,17 +13,22 @@ class Alertloginpage extends StatefulWidget {
 class _AlertloginpageState extends State<Alertloginpage> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
+
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Container(
-                height:400 ,
-                child: Image(image: AssetImage('assetss/home2.jpg',)),
+              Center(
+                child: Container(
+                  height:300 ,
+                  child: const Image(image: AssetImage('assetss/house1.jpg',)),
+                ),
               ),
 
 
@@ -32,22 +37,22 @@ class _AlertloginpageState extends State<Alertloginpage> {
                    child: ElevatedButton(
                      style: ButtonStyle(
                          backgroundColor:
-                         MaterialStateProperty.all<Color>(  Color(0x665ac18e),),
+                         MaterialStateProperty.all<Color>(  const Color(0x665ac18e),),
                          shape: MaterialStateProperty.all<
                              RoundedRectangleBorder>(
                              RoundedRectangleBorder(
                                  borderRadius: BorderRadius.circular(15))),
                          minimumSize:
-                         MaterialStateProperty.all<Size>(Size(330, 60))),
+                         MaterialStateProperty.all<Size>(const Size(330, 60))),
                      onPressed: () {},
                      child: InkWell(
                        onTap: () {
                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                           return UserRegistration();
+                           return const UserRegistration();
                          },));
                        },
 
-                       child: Text(
+                       child: const Text(
                          "USER",
                          style: TextStyle(
                              color: Colors.white,
@@ -59,7 +64,7 @@ class _AlertloginpageState extends State<Alertloginpage> {
 
                ),
 
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Container(
@@ -67,22 +72,22 @@ class _AlertloginpageState extends State<Alertloginpage> {
                 child:ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(  Color(0x665ac18e),),
+                      MaterialStateProperty.all<Color>(  const Color(0x665ac18e),),
                       shape: MaterialStateProperty.all<
                           RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
-                      MaterialStateProperty.all<Size>(Size(330, 60))),
+                      MaterialStateProperty.all<Size>(const Size(330, 60))),
                   onPressed: () {},
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return EmployeeRegistration();
+                        return const EmployeeRegistration();
                       },));
                     },
 
-                    child: Text(
+                    child: const Text(
                       "EMPLOYEE",
                       style: TextStyle(
                           color: Colors.white,

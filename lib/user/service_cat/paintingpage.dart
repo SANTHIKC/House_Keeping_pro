@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Booking/bookingdateandtime.dart';
+import '../booking/bookingdateandtime.dart';
 
-class PlumbingPage extends StatefulWidget {
-  const PlumbingPage({Key? key}) : super(key: key);
+class PaintingPage extends StatefulWidget {
+  const PaintingPage({Key? key}) : super(key: key);
 
   @override
-  State<PlumbingPage> createState() => _PlumbingPageState();
+  State<PaintingPage> createState() => _PaintingPageState();
 }
 
-class _PlumbingPageState extends State<PlumbingPage> {
-  List<String>plumbing=[
-    'Repair Service',
-    'Installation Service',
-    'Drainage Related',
-    'Major Plumbing Work',
-  ];
+class _PaintingPageState extends State<PaintingPage> {
+  // List<String>painting=[
+  //   'Whitewash',
+  //   'Enamel Painting',
+  //   'Synthetic Rubber Painting',
+  //   'Cement Painting',
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,20 +29,20 @@ class _PlumbingPageState extends State<PlumbingPage> {
               child: Container(
                 width: 350,
                 height: 350,
-                decoration: BoxDecoration(shape: BoxShape.rectangle,
-                  image: DecorationImage(image: AssetImage( "assetss/images/plumber3.jpg", ),fit: BoxFit.contain),
+                decoration: const BoxDecoration(shape: BoxShape.rectangle,
+                  image: DecorationImage(image: AssetImage( "assetss/images/painter.jpg", ),fit: BoxFit.contain),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Text("Plumbing  Services", style:TextStyle(
+              child: Text("Painting Services", style:TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w800,
                 color: Colors.black.withOpacity(0.7),
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -53,15 +53,15 @@ class _PlumbingPageState extends State<PlumbingPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Repair Service", style:TextStyle(
+                          Text("Whitewash", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -72,7 +72,7 @@ class _PlumbingPageState extends State<PlumbingPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -83,15 +83,15 @@ class _PlumbingPageState extends State<PlumbingPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Installation Service", style:TextStyle(
+                          Text("Enamel Painting", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -102,7 +102,7 @@ class _PlumbingPageState extends State<PlumbingPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -113,15 +113,15 @@ class _PlumbingPageState extends State<PlumbingPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Drainage Related", style:TextStyle(
+                          Text("Synthetic Rubber Painting", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -132,7 +132,7 @@ class _PlumbingPageState extends State<PlumbingPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -143,15 +143,15 @@ class _PlumbingPageState extends State<PlumbingPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 188, 0, 100),
+                      color: const Color.fromRGBO(255, 188, 0, 100),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
+                    child: const Center(child: Icon(Icons.arrow_forward_ios_rounded,size: 30),),
                   ),
-                  Padding(padding: EdgeInsets.only(left:18),
+                  const Padding(padding: EdgeInsets.only(left:18),
                       child:Row(
                         children: [
-                          Text("Major Plumbing Work", style:TextStyle(
+                          Text("Cement Painting", style:TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -162,11 +162,11 @@ class _PlumbingPageState extends State<PlumbingPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
+            const Padding(
+              padding: EdgeInsets.only(left: 30),
               child: Row(
                 children: [
 
@@ -187,20 +187,20 @@ class _PlumbingPageState extends State<PlumbingPage> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Padding(padding: EdgeInsets.only(left:18),
+            Padding(padding: const EdgeInsets.only(left:18),
                 child:Container(
                   height: 150,
                   child:
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text("Plumbing services incorporate a range of activities."
-                        " A common plumbing service is drain services, which generally"
-                        " involves cleaning the traps and piping of a variety of drain "
-                        "types, including sewer drains, toilet drains, sink drains, and "
-                        "grease traps.", style:TextStyle(
+                  const Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text("A Painter is a professional who helps prepare surfaces,"
+                        " mix paints for different needs, and apply them with brushes or"
+                        " rollers to fill in cracks or apply color on walls and other "
+                        "objects around a home, such as furniture pieces or doors..",
+                        style:TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w900,
                       color: Colors.black,
@@ -210,7 +210,7 @@ class _PlumbingPageState extends State<PlumbingPage> {
 
 
                 )),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Container(
@@ -220,23 +220,23 @@ class _PlumbingPageState extends State<PlumbingPage> {
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(  Color(0x665ac18e),),
+                      MaterialStateProperty.all<Color>(  const Color(0x665ac18e),),
                       shape: MaterialStateProperty.all<
                           RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
-                      MaterialStateProperty.all<Size>(Size(330, 60))),
-                  onPressed: () async{
+                      MaterialStateProperty.all<Size>(const Size(330, 60))),
+                  onPressed: () {
 
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                    prefs.setStringList('selectedServiceList',plumbing );
+                    // SharedPreferences prefs = await SharedPreferences.getInstance();
+                    // prefs.setStringList('selectedServiceList',painting);
 
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return BookingDateandTime();
+                      return const BookingDateandTime();
                     },));
                   },
-                  child: Text(
+                  child: const Text(
                     "Book This Service",
                     style: TextStyle(
                         color: Colors.white,
@@ -247,7 +247,7 @@ class _PlumbingPageState extends State<PlumbingPage> {
               ),
 
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
 

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'appConstants/appConstants.dart';
-import 'loginhomepage.dart';
+import '../../appConstants/appConstants.dart';
+import '../../homescreen/loginhomepage.dart';
 
 class UserRegistration extends StatefulWidget {
   const UserRegistration({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _UserRegistrationState extends State<UserRegistration> {
       {
         print("userregisterdata added");
         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return Signinhome();
+          return const Signinhome();
         },));
       }
 
@@ -64,26 +64,26 @@ class _UserRegistrationState extends State<UserRegistration> {
           color: Colors.white,
           height: 250,
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
+                const Text(
                   "Pic Image From",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ElevatedButton.icon(onPressed: (){
                   pickImage(ImageSource.camera);
-                }, icon: Icon(Icons.camera_alt), label:Text("Camera")),
+                }, icon: const Icon(Icons.camera_alt), label:const Text("Camera")),
                 ElevatedButton.icon(onPressed: (){
                   pickImage(ImageSource.gallery);
-                }, icon: Icon(Icons.image), label:Text("Gallery")),
+                }, icon: const Icon(Icons.image), label:const Text("Gallery")),
               ],
             ),
           ),
@@ -129,7 +129,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                           Container(
                             decoration:BoxDecoration(
                               border: Border.all(width: 1),
-                              borderRadius: BorderRadius.all(Radius.circular(90),),
+                              borderRadius: const BorderRadius.all(Radius.circular(90),),
                             ),
                             child: ClipOval(
 
@@ -146,20 +146,20 @@ class _UserRegistrationState extends State<UserRegistration> {
                               bottom: 0,
                               right: 5,
                               child: IconButton(onPressed: imagePickerOption,
-                                icon: Icon(Icons.add_a_photo,size: 30,)
+                                icon: const Icon(Icons.add_a_photo,size: 30,)
                                 ,))
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
 
                     ],
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("NAME"),
                       ),
                     ],
@@ -182,10 +182,10 @@ class _UserRegistrationState extends State<UserRegistration> {
                     ),
                   ),
 
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Email"),
                       ),
                     ],
@@ -201,17 +201,17 @@ class _UserRegistrationState extends State<UserRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "email",
-                        suffixIcon: Icon(Icons.email),
+                        suffixIcon: const Icon(Icons.email),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Password"),
                       ),
                     ],
@@ -230,17 +230,17 @@ class _UserRegistrationState extends State<UserRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "password",
-                        suffixIcon: Icon(Icons.remove_red_eye),
+                        suffixIcon: const Icon(Icons.remove_red_eye),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("ADDRESS"),
                       ),
                     ],
@@ -263,10 +263,10 @@ class _UserRegistrationState extends State<UserRegistration> {
                     ),
                   ),
 
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Phone Number"),
                       ),
                     ],
@@ -285,7 +285,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "Phone Number",
-                        suffixIcon: Icon(Icons.call),
+                        suffixIcon: const Icon(Icons.call),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -312,7 +312,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                           }
 
                         },
-                        child: Text("Submit")),
+                        child: const Text("Submit")),
                   ),
                 ],
               ),

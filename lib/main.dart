@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:house_keeping_pro/loginhomepage.dart';
+import 'package:house_keeping_pro/homescreen/loginhomepage.dart';
 
-import 'package:house_keeping_pro/alertloginpage.dart';
-import 'package:house_keeping_pro/paintingpage.dart';
-import 'package:house_keeping_pro/plumbingpage.dart';
-import 'package:house_keeping_pro/refrigeratorpage.dart';
-import 'package:house_keeping_pro/userregistration.dart';
+import 'package:house_keeping_pro/homescreen/alertloginpage.dart';
+import 'package:house_keeping_pro/user/service_cat/paintingpage.dart';
+import 'package:house_keeping_pro/user/service_cat/plumbingpage.dart';
+import 'package:house_keeping_pro/user/service_cat/refrigeratorpage.dart';
+import 'package:house_keeping_pro/user/service_cat/userregistration.dart';
 
-import 'package:house_keeping_pro/carpentrypage.dart';
-import 'package:house_keeping_pro/cleaningpage.dart';
-import 'package:house_keeping_pro/electricalpage.dart';
-import 'package:house_keeping_pro/employeregistration.dart';
-import 'package:house_keeping_pro/houseservicepage.dart';
-import 'package:house_keeping_pro/washingmachinepage.dart';
+import 'package:house_keeping_pro/user/service_cat/carpentrypage.dart';
+import 'package:house_keeping_pro/user/service_cat/cleaningpage.dart';
+import 'package:house_keeping_pro/user/service_cat/electricalpage.dart';
+import 'package:house_keeping_pro/employee/employeregistration.dart';
+import 'package:house_keeping_pro/user/houseservicepage.dart';
+import 'package:house_keeping_pro/user/service_cat/washingmachinepage.dart';
 
 import 'package:house_keeping_pro/employee/employeehomepage.dart';
 
-import 'package:house_keeping_pro/Booking/bookingsummery.dart';
-import 'package:house_keeping_pro/Booking/bookingdateandtime.dart';
+import 'package:house_keeping_pro/user/booking/bookingsummery.dart';
+import 'package:house_keeping_pro/user/booking/bookingdateandtime.dart';
 
-import 'package:house_keeping_pro/Booking/bookingsuccess.dart';
+import 'package:house_keeping_pro/user/booking/bookingsuccess.dart';
 
 
 
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
         primarySwatch: Colors.blue,

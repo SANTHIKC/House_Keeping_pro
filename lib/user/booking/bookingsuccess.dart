@@ -15,8 +15,8 @@ class _BookingSuccessState extends State<BookingSuccess> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff5ac18e),
-        leading: Icon(
+        backgroundColor: const Color(0xff5ac18e),
+        leading: const Icon(
           Icons.arrow_back,
           color: Colors.white,
           size: 35,
@@ -29,9 +29,9 @@ class _BookingSuccessState extends State<BookingSuccess> {
             Container(
               width: 400,
               alignment: Alignment.center,
-              child: Center(
+              child: const Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10),
                   child: Text(
                     "Booking Successfully ",
                     style: TextStyle(
@@ -50,25 +50,25 @@ class _BookingSuccessState extends State<BookingSuccess> {
                   child: Lottie.asset('assetss/animation/tick.json')),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 80),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 80),
               child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
-                      Color(0x665ac18e),
+                      const Color(0x665ac18e),
                     ),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15))),
                     minimumSize:
-                        MaterialStateProperty.all<Size>(Size(330, 60))),
+                        MaterialStateProperty.all<Size>(const Size(330, 60))),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) {
-                      return HouseServicepage();
+                      return const HouseServicepage();
                     },
                   ));
                 },
-                child: Text(
+                child: const Text(
                   "back to home page",
                   style: TextStyle(
                     color: Colors.white,
