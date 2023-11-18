@@ -73,7 +73,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
     final url = "${AppConstants.url}singleuserdataview.php";
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? user_id = prefs.getString("id");
+    String? user_id = prefs.getString("user_id");
     print(user_id);
 
     var response = await post(Uri.parse(url), body: {"user_id": user_id});

@@ -42,12 +42,16 @@ class _SigninhomeState extends State<Signinhome> {
 
 
       if (userdata["data"] == "successful" && userdata["message"]["type"] == "user") {
+        dynamic currentUser = userdata;
+        print('Current User : $currentUser');
         SharedPreferences sharedpref =await SharedPreferences.getInstance();
-        String log_id= userdata["message"]["log_id"];
-        print(log_id);
-        sharedpref.setString("id",log_id);
 
-        print("employeedata added");
+        String log_id= userdata["message"]["log_id"];
+
+        sharedpref.setString("user_id",log_id);
+        print('userid=$log_id');
+
+        print("userdata added");
 
 
         Navigator.of(context).push(MaterialPageRoute(
@@ -60,9 +64,9 @@ class _SigninhomeState extends State<Signinhome> {
           {
             SharedPreferences sharedpref =await SharedPreferences.getInstance();
             String log_id= userdata["message"]["log_id"];
-            sharedpref.setString("id",log_id);
+            sharedpref.setString("employee_id",log_id);
 
-            print("userdata added");
+            print("employeedata added");
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) {
                 return const EmployeeHomePage(

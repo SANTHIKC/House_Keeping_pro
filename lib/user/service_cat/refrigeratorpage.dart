@@ -38,7 +38,7 @@ class _RefrigeratorPageState extends State<RefrigeratorPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
-              child: Text("Refrigerator  Services", style:TextStyle(
+              child: Text("Refrigerator Service", style:TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w800,
                 color: Colors.black.withOpacity(0.7),

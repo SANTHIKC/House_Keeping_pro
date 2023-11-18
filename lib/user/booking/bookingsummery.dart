@@ -21,17 +21,37 @@ class _BookingSummeryState extends State<BookingSummery> {
   @override
   Widget build(BuildContext context) {
     // String dropdownValue = widget.selectedServicelistname.first;
+    int? booking_id; // Declare booking_id variable
+
+    Future<void> fetchBookingId() async {
+      final url = "${AppConstants.url}booking.php";
+
+      // Make a GET request to fetch the booking_id
+      final response = await get(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        print('data');
+
+        return data;
+      }
+    }
+
+
+    Map<String, dynamic> userData = {};
 
     Future<dynamic> getuserdata() async {
       final url = "${AppConstants.url}singleuserdataview.php";
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? user_id = prefs.getString("id");
+      String? user_id = prefs.getString("user_id");
 
       var response = await post(Uri.parse(url), body: {"user_id": user_id});
+
       if (response.statusCode == 200) {
-        print(response.body);
+        // print(response.body);
         var body = jsonDecode(response.body);
+
         return body;
       }
     }
@@ -81,7 +101,7 @@ class _BookingSummeryState extends State<BookingSummery> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20, right: 5),
+                          padding: const EdgeInsets.only(top: 20, right: 70),
                           child: Text(
                             widget.selectedService,
                             style: const TextStyle(
@@ -181,7 +201,7 @@ class _BookingSummeryState extends State<BookingSummery> {
                     }
                     if (snapshot.hasData) {
                       return Container(
-                        height: 200,
+                        height: 250,
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.black12,
@@ -265,6 +285,11 @@ class _BookingSummeryState extends State<BookingSummery> {
                                 ),
                               ],
                             ),
+                            // CircleAvatar(
+                            //   radius: 50,
+                            //   backgroundImage: NetworkImage(
+                            //       "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                            // )
                           ],
                         ),
                       );
@@ -273,9 +298,7 @@ class _BookingSummeryState extends State<BookingSummery> {
                     }
                   }),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+
 
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 80),
@@ -290,25 +313,43 @@ class _BookingSummeryState extends State<BookingSummery> {
                     minimumSize:
                         MaterialStateProperty.all<Size>(const Size(330, 60))),
                 onPressed: () async {
-                  final url = "${AppConstants.url}booking.php";
-                  "${AppConstants.url}singleuserdataview.php";
+                  final url1 = "${AppConstants.url}singleuserdataview.php";
 
-                  // final address =  snapshot.data["data"]["address"].toString();
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  String? user_id = prefs.getString("id");
-                  String user_name = ''; // Replace with the user's name
-                  String service_type = widget.selectedService;
-                  String address = ''; // Replace with the user's address
-                  String phone_number =
-                      ''; // Replace with the user's phone number
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  String? user_id = prefs.getString("user_id");
+
+                  var response1 = await post(Uri.parse(url1), body: {"user_id": user_id});
+                  var body1 = jsonDecode(response1.body);
+
+                  if (response1.statusCode == 200) {
+                    // print(response.body);
+                     body1 = jsonDecode(response1.body);
+
+
+                  }
+
+                  final url = "${AppConstants.url}booking.php";
+
+                  // final userData = await getuserdata();
+
+                  // SharedPreferences prefs =
+                  //     await SharedPreferences.getInstance();
+                  // String? user_id = prefs.getString("user_id");
+                  print('bookingpage${user_id}');
+
+                  String? user_name = body1['data']['user_name'] ?? '';
+                  //
+                  String? service_type = widget.selectedService;
+                  String? address = body1['data']['address'] ?? '';
+
+                  String? phone_number = body1['data']['phone_number'] ?? '';
                   String date =
                       "${widget.focusedDay.year}-${widget.focusedDay.month}-${widget.focusedDay.day}";
-                  String image = ''; // Replace with the image data
 
 
                   // Create the request body
-                  var body = {
+                  var data = {
+                    // "booking_id": booking_id,
                     "user_id": user_id,
                     "user_name": user_name,
                     "service_type": service_type,
@@ -318,13 +359,14 @@ class _BookingSummeryState extends State<BookingSummery> {
                   };
 
                   // Send the POST request with the data
-                  var response = await post(Uri.parse(url), body: body);
-                  print(response);
+                  var response = await post(Uri.parse(url), body: data);
 
                   if (response.statusCode == 200) {
+                    print('success1');
                     print(response.body);
-                    var body = jsonDecode(response.body);
-                    return body;
+                    // return body;
+                  } else {
+                    print('Failed');
                   }
 
                   Navigator.of(context).push(MaterialPageRoute(
