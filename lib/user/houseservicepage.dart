@@ -50,11 +50,11 @@ class _HouseServicepageState extends State<HouseServicepage> {
     'assetss/images/washingmachine.jpg'
   ];
 
-  List<String> servicename = [
-    " Electrical Work",
-    " Cleaning",
+  List<String> servicename = <String>[
+    "Electrical Work",
+    "Cleaning",
     "Plumbing Service",
-    " Carpentry Work",
+    "Carpentry Work",
     "painting work",
     "Refrigerator Service",
     "Washingmachine Service",

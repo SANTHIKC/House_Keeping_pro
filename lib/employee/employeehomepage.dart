@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appConstants/appConstants.dart';
+import 'approveduserstatus.dart';
 import 'employeregistration.dart';
 
 class EmployeeHomePage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     print("hiii");
     print(emp_type);
 
-    var response = await post(Uri.parse(url1), body: {"service_type": "Washingmachine Service"});
+    var response = await post(Uri.parse(url1), body: {"service_type": emp_type},);
     print(response);
     var body;
     print(response.statusCode);
@@ -61,7 +62,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     print(emp_id);
 
 
-    final response = await post(Uri.parse(url),body: {"booking_id":bookingid,"emp_id": emp_id });
+    final response = await post(Uri.parse(url),body:{"booking_id":bookingid,"emp_id": emp_id });
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
@@ -210,7 +211,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     }
                     if (snapshot.hasData) {
                       return Container(
-                        height: 230,
+                        height: 300,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -265,21 +266,49 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                             const SizedBox(
                               height: 10,
                             ),
-                            const Padding(
+                             Padding(
                               padding: EdgeInsets.only(left: 15),
                               child: Row(
                                 children: [
                                   Text(
-                                    'Have a Nice day ',
+                                    ' View approved users',
                                     style: TextStyle(
                                       color: Colors.black87,
                                       fontSize: 25,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
+
                                 ],
                               ),
                             ),
+
+                            Padding(
+                              padding:  EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.white60),
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                      minimumSize:
+                                          MaterialStateProperty.all<Size>(
+                                               Size(150, 60))),
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                      return ApproverUserStatus();
+                                    },));
+                                  },
+                                  child:  Text(
+                                    "Click here",
+                                    style: TextStyle(color: Colors.blue,fontSize: 25),
+                                  )),
+                            )
+
                           ],
                         ),
                       );
@@ -316,10 +345,13 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       );
                     }
                     if (snapshot.hasData) {
+
                       return SizedBox(height: MediaQuery.sizeOf(context).height/1.5,
                         child: ListView.builder(
                           itemCount:snapshot.data["data"].length,
                           itemBuilder: (context,index) {
+
+
                             return Padding(
                               padding: const EdgeInsets.all(10),
                               child: Container(
@@ -528,7 +560,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                                         MaterialStateProperty.all<Size>(
                                                              Size(150, 60))),
                                                 onPressed: () {
-                                                  approvebooking(snapshot.data["data"][index]["booking_id"]);
+                                                  approvebooking(snapshot.data["data"][index]["booking_id"].toString());
                                                 },
                                                 child:  Text(
                                                   "Accept",
@@ -579,8 +611,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        // showSelectedLabels: true,
+        // showUnselectedLabels: true,
         items: [
            BottomNavigationBarItem(
             icon: Icon(Icons.home),
