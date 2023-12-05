@@ -157,26 +157,16 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   ),
                   ListTile(
                     shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.share),
+                    leading: const Icon(Icons.task_rounded),
                     title: const Text(
-                      'Share',
+                      'Status ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                       ),
                     ),
                   ),
-                  ListTile(
-                    shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.notification_add),
-                    title: const Text(
-                      'Notification',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
+
                   ListTile(
                     shape: Border.all(color: Colors.black12),
                     leading: const Icon(Icons.logout),
@@ -491,7 +481,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                                 Padding(
                                                   padding:  EdgeInsets.only(left: 15),
                                                   child: Text(
-                                                    snapshot.data["data"][index]["address"].toString(),
+                                                    snapshot.data["data"][index]["service_type"].toString(),
                                                     style:  TextStyle(
                                                       color: Colors.black87,
                                                       fontSize: 20,
@@ -515,7 +505,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                                 Padding(
                                                   padding: EdgeInsets.only(left: 25),
                                                   child: Text(
-                                                    "phonenumber  :",
+                                                    "Status  :",
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 15,
@@ -524,7 +514,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                                 ),
                                                 Padding(
                                                   padding:  EdgeInsets.only(left: 15),
-                                                  child: Text(snapshot.data["data"][index]["phone_number"].toString(),
+                                                  child: Text(snapshot.data["data"][index]["status"].toString(),
 
                                                     style:  TextStyle(
                                                       color: Colors.black87,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:house_keeping_pro/user/booking/approvebooking.dart';
 import 'package:house_keeping_pro/user/service_cat/paintingpage.dart';
 import 'package:house_keeping_pro/user/service_cat/plumbingpage.dart';
 import 'package:house_keeping_pro/user/service_cat/refrigeratorpage.dart';
@@ -160,26 +161,18 @@ class _HouseServicepageState extends State<HouseServicepage> {
                 ),
               ),
             ),
-            const ListTile(
-              leading: Icon(Icons.share),
-              title: Text(
-                'Share',
+            ListTile(
+              shape: Border.all(color: Colors.black12),
+              leading: const Icon(Icons.task_rounded),
+              title: const Text(
+                'Status ',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),
               ),
             ),
-            const ListTile(
-              leading: Icon(Icons.notification_add),
-              title: Text(
-                'Notification',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-            ),
+
             const ListTile(
               leading: Icon(Icons.logout),
               title: Text(
@@ -267,7 +260,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.only(left: 15),
                                 child: Row(
                                   children: [
@@ -279,6 +272,35 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Row(
+                                  children: [
+                                    ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                Colors.white60),
+                                            shape: MaterialStateProperty.all<
+                                                RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                    BorderRadius.circular(10))),
+                                            minimumSize:
+                                            MaterialStateProperty.all<Size>(
+                                                Size(150, 60))),
+                                        onPressed: () {
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                            return ApprovebookingView();
+                                          },));
+                                        },
+                                        child:  Text(
+                                          "Click here",
+                                          style: TextStyle(color: Colors.blue,fontSize: 25),
+                                        )),
                                   ],
                                 ),
                               ),
