@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appConstants/appConstants.dart';
+import '../homescreen/loginhomepage.dart';
 import 'approveduserstatus.dart';
 import 'employeregistration.dart';
 
@@ -229,7 +230,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       // Handle the tap event here, like navigating to a different screen.
                       // For example:
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                        return Signinhome(); // Replace with the screen you want to navigate to.
                       }));
                     },
                     child: Container(
@@ -528,7 +529,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                                 Padding(
                                                   padding:  EdgeInsets.only(left: 15),
                                                   child: Text(
-                                                    snapshot.data["data"][index]["service_type"].toString(),
+                                                    snapshot.data["data"][index]["address"].toString(),
                                                     style:  TextStyle(
                                                       color: Colors.black87,
                                                       fontSize: 20,
