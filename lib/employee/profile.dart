@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appConstants/appConstants.dart';
+import 'approveduserstatus.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -46,31 +47,88 @@ class _ProfileState extends State<Profile> {
                   return Container(
                     color: const Color(0xcc5ac18e),
                     width: double.infinity,
-                    height: 300,
+                    height: 400,
                     padding: const EdgeInsets.only(top: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundImage: NetworkImage(
-                              "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                        SizedBox(
+                          height: 30,
                         ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: CircleAvatar(
+                                radius:70,
+                                backgroundImage: NetworkImage(
+                                    "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                              ),
+                            ),
+                          ],
+                        ),
+
                         const SizedBox(
-                          height: 15,
+                          height: 5,
                         ),
-                        Text(
-                          snapshot.data["data"]["name"].toString(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["name"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
                           ),
                         ),
-                        Text(
-                          snapshot.data["data"]["email"],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["email"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["address"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["phone_number"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
                           ),
                         ),
                       ],
@@ -82,61 +140,108 @@ class _ProfileState extends State<Profile> {
               }),
           Column(
             children: [
-              ListTile(
-                shape: Border.all(color: Colors.black12),
-                leading: const Icon(Icons.person),
-                title: const Text(
-                  'Profile',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+              GestureDetector(
+                onTap: () {
+                  // Handle the tap event here, like navigating to a different screen.
+                  // For example:
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return Profile(); // Replace with the screen you want to navigate to.
+                  }));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.person),
+                    title: Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
               ),
-              ListTile(
-                shape: Border.all(color: Colors.black12),
-                leading: const Icon(Icons.settings),
-                title: const Text(
-                  'Settings',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+              GestureDetector(
+                onTap: () {
+                  // Handle the tap event here, like navigating to a different screen.
+                  // For example:
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return Profile(); // Replace with the screen you want to navigate to.
+                  }));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text(
+                      'Settings',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
               ),
-              ListTile(
-                shape: Border.all(color: Colors.black12),
-                leading: const Icon(Icons.share),
-                title: const Text(
-                  'Share',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+              GestureDetector(
+                onTap: () {
+                  // Handle the tap event here, like navigating to a different screen.
+                  // For example:
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                  }));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: ListTile(
+                    shape: Border.all(color: Colors.black12),
+                    leading: const Icon(Icons.task_rounded),
+                    title: const Text(
+                      'Status ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
               ),
-              ListTile(
-                shape: Border.all(color: Colors.black12),
-                leading: const Icon(Icons.notification_add),
-                title: const Text(
-                  'Notification',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
+              GestureDetector(
+                onTap: () {
+                  // Handle the tap event here, like navigating to a different screen.
+                  // For example:
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                  }));
+                },
+                child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child:  ListTile(
+                      leading: Icon(Icons.logout),
+                      title: Text(
+                        'Logout',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    )
                 ),
               ),
-              ListTile(
-                shape: Border.all(color: Colors.black12),
-                leading: const Icon(Icons.logout),
-                title: const Text(
-                  'Logout',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
+
             ],
           )
         ],

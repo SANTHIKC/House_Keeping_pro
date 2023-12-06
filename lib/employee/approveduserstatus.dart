@@ -35,20 +35,23 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-                padding:  EdgeInsets.only(left: 15),
-                child: Text(" User Status",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.black.withOpacity(0.7),
-                    ))),
             SizedBox(
-              height: 22,
+              height: 30,
+            ),
+            Center(
+              child: Text(" User Status",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.black.withOpacity(0.7),
+                  )),
+            ),
+            SizedBox(
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(5),
@@ -306,10 +309,10 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                   }),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
            Container(
-             height: 50,
+             height: 65,
                width: 250,
                decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
 

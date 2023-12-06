@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../appConstants/appConstants.dart';
+import '../booking/approvebooking.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
@@ -31,7 +32,12 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //
+      //   backgroundColor: Color(0xcc5ac18e),
+      //
+      // ),
       body: Column(
         children: [
           FutureBuilder(
@@ -44,35 +50,90 @@ class _UserProfileState extends State<UserProfile> {
                 }
                 if (snapshot.hasData) {
                   return Container(
-                    color: const Color(0xcc5ac18e),
+
+                    color: Color(0xcc5ac18e),
                     width: double.infinity,
-                    height: 300,
+
                     padding: const EdgeInsets.only(top: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundImage: NetworkImage(
-                              "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: CircleAvatar(
+                                radius:70,
+                                backgroundImage: NetworkImage(
+                                    "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(
-                          height: 15,
+                          height: 5,
                         ),
-                        Text(
-                          snapshot.data["data"]["user_name"].toString(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["user_name"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
                           ),
                         ),
-                        Text(
-                          snapshot.data["data"]["email"].toString(),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["email"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["address"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30,bottom: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["phone_number"].toString(),
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+
                       ],
                     ),
                   );
@@ -80,48 +141,108 @@ class _UserProfileState extends State<UserProfile> {
                   return const Text("somthing went wrong");
                 }
               }),
-          const ListTile(
-            leading: Icon(Icons.person),
-            title: Text(
-              'Profile',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
+          GestureDetector(
+            onTap: () {
+              // Handle the tap event here, like navigating to a different screen.
+              // For example:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return UserProfile(); // Replace with the screen you want to navigate to.
+              }));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black12),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: ListTile(
+                leading: Icon(Icons.person),
+                title: Text(
+                  'Profile',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ),
           ),
-          const ListTile(
-            leading: Icon(Icons.settings),
-            title: Text(
-              'Settings',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
+          GestureDetector(
+            onTap: () {
+              // Handle the tap event here, like navigating to a different screen.
+              // For example:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return UserProfile(); // Replace with the screen you want to navigate to.
+              }));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black12),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: ListTile(
+                leading: Icon(Icons.settings),
+                title: Text(
+                  'Settings',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ),
           ),
-          ListTile(
-            shape: Border.all(color: Colors.black12),
-            leading: const Icon(Icons.task_rounded),
-            title: const Text(
-              'Status ',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
+          GestureDetector(
+            onTap: () {
+              // Handle the tap event here, like navigating to a different screen.
+              // For example:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return ApprovebookingView(); // Replace with the screen you want to navigate to.
+              }));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black12),
+                borderRadius: BorderRadius.circular(8.0),
               ),
+              child: ListTile(
+                shape: Border.all(color: Colors.black12),
+                leading: const Icon(Icons.task_rounded),
+                title: const Text(
+                  'Status ',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              // Handle the tap event here, like navigating to a different screen.
+              // For example:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return ApprovebookingView(); // Replace with the screen you want to navigate to.
+              }));
+            },
+            child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child:  ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text(
+                    'Logout',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
+                )
             ),
           ),
 
-          const ListTile(
-            leading: Icon(Icons.logout),
-            title: Text(
-              'Logout',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-            ),
-          )
         ],
       ),
     );

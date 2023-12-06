@@ -5,6 +5,7 @@ import 'package:house_keeping_pro/user/booking/approvebooking.dart';
 import 'package:house_keeping_pro/user/service_cat/paintingpage.dart';
 import 'package:house_keeping_pro/user/service_cat/plumbingpage.dart';
 import 'package:house_keeping_pro/user/service_cat/refrigeratorpage.dart';
+import 'package:house_keeping_pro/user/service_cat/userprofile.dart';
 import 'package:house_keeping_pro/user/service_cat/washingmachinepage.dart';
 
 import 'package:house_keeping_pro/user/service_cat/carpentrypage.dart';
@@ -14,6 +15,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appConstants/appConstants.dart';
+import 'booking/bookingsuccess.dart';
 
 class HouseServicepage extends StatefulWidget {
   const HouseServicepage({Key? key}) : super(key: key);
@@ -85,14 +87,31 @@ class _HouseServicepageState extends State<HouseServicepage> {
     }
   }
 
+
+  int _currentIndex = 0;
+
+
+   List<Widget> _screens = [
+    HouseServicepage(),
+     ApprovebookingView(),
+    UserProfile(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff5ac18e),
+        elevation: 1,
+        title: Text(
+          "Home Shine",
+          style: TextStyle(color: Colors.black, fontStyle: FontStyle.normal,fontSize: 30,),
+        ),
+        backgroundColor: Colors.white24,
+
       ),
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
+
         child: Column(
           children: [
             FutureBuilder(
@@ -141,52 +160,116 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     return const Text("somthing went wrong");
                   }
                 }),
-            const ListTile(
-              leading: Icon(Icons.person),
-              title: Text(
-                'Profile',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+            GestureDetector(
+              onTap: () {
+                // Handle the tap event here, like navigating to a different screen.
+                // For example:
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return UserProfile(); // Replace with the screen you want to navigate to.
+                }));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: ListTile(
+                  leading: Icon(Icons.person),
+                  title: Text(
+                    'Profile',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ),
             ),
-            const ListTile(
-              leading: Icon(Icons.settings),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+            GestureDetector(
+              onTap: () {
+                // Handle the tap event here, like navigating to a different screen.
+                // For example:
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return UserProfile(); // Replace with the screen you want to navigate to.
+                }));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text(
+                    'Settings',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ),
             ),
-            ListTile(
-              shape: Border.all(color: Colors.black12),
-              leading: const Icon(Icons.task_rounded),
-              title: const Text(
-                'Status ',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+            GestureDetector(
+              onTap: () {
+                // Handle the tap event here, like navigating to a different screen.
+                // For example:
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return ApprovebookingView(); // Replace with the screen you want to navigate to.
+                }));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
+                child: ListTile(
+                  shape: Border.all(color: Colors.black12),
+                  leading: const Icon(Icons.task_rounded),
+                  title: const Text(
+                    'Status ',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                // Handle the tap event here, like navigating to a different screen.
+                // For example:
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return ApprovebookingView(); // Replace with the screen you want to navigate to.
+                }));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child:  ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text(
+                    'Logout',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
+                )
               ),
             ),
 
-            const ListTile(
-              leading: Icon(Icons.logout),
-              title: Text(
-                'Logout',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-            )
+
+
+
           ],
         ),
       ),
-      body: SafeArea(
+      body:
+      SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -230,11 +313,11 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                       backgroundImage: NetworkImage(
                                           "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
                                     ),
-                                    const Icon(
-                                      Icons.notifications_outlined,
-                                      color: Colors.black,
-                                      size: 35,
-                                    ),
+                                    // const Icon(
+                                    //   Icons.notifications_outlined,
+                                    //   color: Colors.black,
+                                    //   size: 35,
+                                    // ),
                                   ],
                                 ),
                               ),
@@ -275,35 +358,35 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 15),
-                                child: Row(
-                                  children: [
-                                    ElevatedButton(
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.white60),
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(10))),
-                                            minimumSize:
-                                            MaterialStateProperty.all<Size>(
-                                                Size(150, 60))),
-                                        onPressed: () {
-                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                                            return ApprovebookingView();
-                                          },));
-                                        },
-                                        child:  Text(
-                                          "Click here",
-                                          style: TextStyle(color: Colors.blue,fontSize: 25),
-                                        )),
-                                  ],
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: EdgeInsets.only(left: 15),
+                              //   child: Row(
+                              //     children: [
+                              //       ElevatedButton(
+                              //           style: ButtonStyle(
+                              //               backgroundColor:
+                              //               MaterialStateProperty.all<Color>(
+                              //                   Colors.white60),
+                              //               shape: MaterialStateProperty.all<
+                              //                   RoundedRectangleBorder>(
+                              //                   RoundedRectangleBorder(
+                              //                       borderRadius:
+                              //                       BorderRadius.circular(10))),
+                              //               minimumSize:
+                              //               MaterialStateProperty.all<Size>(
+                              //                   Size(150, 60))),
+                              //           onPressed: () {
+                              //             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                              //               return ApprovebookingView();
+                              //             },));
+                              //           },
+                              //           child:  Text(
+                              //             "Click here",
+                              //             style: TextStyle(color: Colors.blue,fontSize: 25),
+                              //           )),
+                              //     ],
+                              //   ),
+                              // ),
                             ],
                           ),
                         );
@@ -586,16 +669,28 @@ class _HouseServicepageState extends State<HouseServicepage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+             Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => _screens[index]),
+            );
+          });
+        },
+
         items: [
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.library_books),
             label: 'Booking',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
             label: 'Profile',
           ),

@@ -24,13 +24,27 @@ class _BookingDateandTimeState extends State<BookingDateandTime> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(backgroundColor: Color(0xff5ac18e),),
+
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text("Select Date", style:TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.black.withOpacity(0.7),
+                    )),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
                   _tableCalendar(),
                   const SizedBox(
                     height: 15,

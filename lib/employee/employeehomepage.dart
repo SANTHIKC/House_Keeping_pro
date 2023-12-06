@@ -74,11 +74,26 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
 
 
 
+  int _currentIndex = 0;
+
+
+  List<Widget> _screens = [
+    EmployeeHomePage(),
+    ApproverUserStatus(),
+    Profile(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff5ac18e),
+        elevation: 1,
+        title: Text(
+          "Home Shine",
+          style: TextStyle(color: Colors.black, fontStyle: FontStyle.normal,fontSize: 30,),
+        ),
+        backgroundColor: Colors.white24,
+
       ),
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
@@ -133,51 +148,108 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   }),
               Column(
                 children: [
-                  ListTile(
-                    shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.person),
-                    title: const Text(
-                      'Profile',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return Profile(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.person),
+                        title: Text(
+                          'Profile',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  ListTile(
-                    shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.settings),
-                    title: const Text(
-                      'Settings',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return Profile(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text(
+                          'Settings',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                  ListTile(
-                    shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.task_rounded),
-                    title: const Text(
-                      'Status ',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
+                      child: ListTile(
+                        shape: Border.all(color: Colors.black12),
+                        leading: const Icon(Icons.task_rounded),
+                        title: const Text(
+                          'Status ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black12),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child:  ListTile(
+                          leading: Icon(Icons.logout),
+                          title: Text(
+                            'Logout',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                            ),
+                          ),
+                        )
                     ),
                   ),
 
-                  ListTile(
-                    shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.logout),
-                    title: const Text(
-                      'Logout',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
                 ],
               )
             ],
@@ -201,7 +273,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     }
                     if (snapshot.hasData) {
                       return Container(
-                        height: 300,
+                        height: 250,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -227,11 +299,11 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                     backgroundImage: NetworkImage(
                                         "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
                                   ),
-                                  const Icon(
-                                    Icons.notifications_outlined,
-                                    color: Colors.black,
-                                    size: 35,
-                                  ),
+                                  // const Icon(
+                                  //   Icons.notifications_outlined,
+                                  //   color: Colors.black,
+                                  //   size: 35,
+                                  // ),
                                 ],
                               ),
                             ),
@@ -256,48 +328,23 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                             const SizedBox(
                               height: 10,
                             ),
-                             Padding(
-                              padding: EdgeInsets.only(left: 15),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    ' View approved users',
-                                    style: TextStyle(
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    snapshot.data["data"]["email"].toString(),
+                                    style: const TextStyle(
                                       color: Colors.black87,
-                                      fontSize: 25,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
 
-                            Padding(
-                              padding:  EdgeInsets.all(10),
-                              child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.white60),
-                                      shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10))),
-                                      minimumSize:
-                                          MaterialStateProperty.all<Size>(
-                                               Size(150, 60))),
-                                  onPressed: () {
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                                      return ApproverUserStatus();
-                                    },));
-                                  },
-                                  child:  Text(
-                                    "Click here",
-                                    style: TextStyle(color: Colors.blue,fontSize: 25),
-                                  )),
-                            )
+
 
                           ],
                         ),
@@ -601,24 +648,32 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // showSelectedLabels: true,
-        // showUnselectedLabels: true,
+
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => _screens[index]),
+            );
+          });
+        },
+
         items: [
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'Status',
           ),
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
             label: 'Profile',
           ),
         ],
-
-
       ),
     );
   }

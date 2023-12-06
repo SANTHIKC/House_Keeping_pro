@@ -14,18 +14,14 @@ class _BookingSuccessState extends State<BookingSuccess> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff5ac18e),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-          size: 35,
-        ),
-      ),
+
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
               width: 400,
               alignment: Alignment.center,

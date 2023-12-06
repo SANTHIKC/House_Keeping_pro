@@ -33,7 +33,7 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
       body: SafeArea(
         child: Column(
           children: [

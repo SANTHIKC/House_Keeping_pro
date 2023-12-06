@@ -58,20 +58,20 @@ class _BookingSummeryState extends State<BookingSummery> {
 
     DateTime focusedDay = widget.focusedDay;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff5ac18e),
-        title: const Text(
-          "Booking Summery",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+
       body: SafeArea(
         child: ListView(
           children: [
+            SizedBox(
+              height: 40,
+            ),
+            Center(
+              child: Text("Booking Details", style:TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w800,
+                color: Colors.black.withOpacity(0.7),
+              )),
+            ),
             const SizedBox(
               height: 30,
             ),
