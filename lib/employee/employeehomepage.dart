@@ -541,40 +541,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                           ],
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
 
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(left: 25),
-                                                  child: Text(
-                                                    "Status  :",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:  EdgeInsets.only(left: 15),
-                                                  child: Text(snapshot.data["data"][index]["status"].toString(),
-
-                                                    style:  TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
 
 
 
