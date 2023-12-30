@@ -44,21 +44,17 @@ class _AlertloginpageState extends State<Alertloginpage> {
                                  borderRadius: BorderRadius.circular(15))),
                          minimumSize:
                          MaterialStateProperty.all<Size>(const Size(330, 60))),
-                     onPressed: () {},
-                     child: InkWell(
-                       onTap: () {
-                         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                           return const UserRegistration();
-                         },));
-                       },
-
-                       child: const Text(
-                         "USER",
-                         style: TextStyle(
-                             color: Colors.white,
-                             fontSize: 18,
-                             fontWeight: FontWeight.bold),
-                       ),
+                     onPressed: () {
+                       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                         return const UserRegistration();
+                       },));
+                     },
+                     child: const Text(
+                       "USER",
+                       style: TextStyle(
+                           color: Colors.white,
+                           fontSize: 18,
+                           fontWeight: FontWeight.bold),
                      ),
                    ),
 
@@ -79,21 +75,17 @@ class _AlertloginpageState extends State<Alertloginpage> {
                               borderRadius: BorderRadius.circular(15))),
                       minimumSize:
                       MaterialStateProperty.all<Size>(const Size(330, 60))),
-                  onPressed: () {},
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return const EmployeeRegistration();
-                      },));
-                    },
-
-                    child: const Text(
-                      "EMPLOYEE",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return const EmployeeRegistration();
+                    },));
+                  },
+                  child: const Text(
+                    "EMPLOYEE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

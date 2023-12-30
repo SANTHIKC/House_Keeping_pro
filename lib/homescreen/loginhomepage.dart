@@ -54,7 +54,7 @@ class _SigninhomeState extends State<Signinhome> {
         print("userdata added");
 
 
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) {
             return const HouseServicepage();
           },
@@ -67,7 +67,7 @@ class _SigninhomeState extends State<Signinhome> {
             sharedpref.setString("employee_id",log_id);
 
             print("employeedata added");
-            Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) {
                 return const EmployeeHomePage(
 

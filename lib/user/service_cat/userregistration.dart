@@ -42,7 +42,7 @@ class _UserRegistrationState extends State<UserRegistration> {
       if(userdata["message"]=="Added")
       {
         print("userregisterdata added");
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
           return const Signinhome();
         },));
       }
@@ -193,6 +193,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       controller: emailtextcontroller,
                       validator: (m) {
                         if (m!.isEmpty) {
@@ -219,6 +220,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+
                       controller: passwordtextcontroller,
                       validator: (o) {
                         if (o!.isEmpty)  {
@@ -274,6 +276,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+                      keyboardType: TextInputType.phone,
                       controller: phonenotextcontroller,
                       validator: (o) {
                         if (o!.isEmpty)  {

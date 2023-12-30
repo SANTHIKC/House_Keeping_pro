@@ -132,6 +132,9 @@ class _ProfileState extends State<Profile> {
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: 5,
+                        ),
                       ],
                     ),
                   );
@@ -139,6 +142,7 @@ class _ProfileState extends State<Profile> {
                   return const Text("somthing went wrong");
                 }
               }),
+
           Column(
             children: [
               GestureDetector(
@@ -166,31 +170,31 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  // Handle the tap event here, like navigating to a different screen.
-                  // For example:
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return Profile(); // Replace with the screen you want to navigate to.
-                  }));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black12),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text(
-                      'Settings',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     // Handle the tap event here, like navigating to a different screen.
+              //     // For example:
+              //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              //       return Profile(); // Replace with the screen you want to navigate to.
+              //     }));
+              //   },
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       border: Border.all(color: Colors.black12),
+              //       borderRadius: BorderRadius.circular(8.0),
+              //     ),
+              //     child: ListTile(
+              //       leading: Icon(Icons.settings),
+              //       title: Text(
+              //         'Settings',
+              //         style: TextStyle(
+              //           color: Colors.black,
+              //           fontSize: 20,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               GestureDetector(
                 onTap: () {
                   // Handle the tap event here, like navigating to a different screen.
@@ -218,12 +222,13 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               GestureDetector(
-                onTap: () {
+  
+                onTap: () async{
+                  SharedPreferences sharedpref=await SharedPreferences.getInstance();
+                  await sharedpref.clear();
                   // Handle the tap event here, like navigating to a different screen.
                   // For example:
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return Signinhome(); // Replace with the screen you want to navigate to.
-                  }));
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(BuildContext context) =>Signinhome() ,), (route) => false);
                 },
                 child: Container(
                     decoration: BoxDecoration(

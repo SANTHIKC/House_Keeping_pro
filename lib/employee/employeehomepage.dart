@@ -153,7 +153,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
                       // For example:
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
                         return Profile(); // Replace with the screen you want to navigate to.
                       }));
                     },
@@ -174,31 +174,31 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      // Handle the tap event here, like navigating to a different screen.
-                      // For example:
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return Profile(); // Replace with the screen you want to navigate to.
-                      }));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text(
-                          'Settings',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     // Handle the tap event here, like navigating to a different screen.
+                  //     // For example:
+                  //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  //       return Profile(); // Replace with the screen you want to navigate to.
+                  //     }));
+                  //   },
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       border: Border.all(color: Colors.black12),
+                  //       borderRadius: BorderRadius.circular(8.0),
+                  //     ),
+                  //     child: ListTile(
+                  //       leading: Icon(Icons.settings),
+                  //       title: Text(
+                  //         'Settings',
+                  //         style: TextStyle(
+                  //           color: Colors.black,
+                  //           fontSize: 20,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   GestureDetector(
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
@@ -351,7 +351,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                         ),
                       );
                     } else {
-                      return  Text("somthing went wrong");
+                      return  Text("No data here");
                     }
                   }),
             ),

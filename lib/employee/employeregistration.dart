@@ -50,7 +50,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
       var empdata = jsonDecode(gettngData.body);
       if (empdata["message"] == "Added") {
         print("suceessfully added");
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) {
             return Signinhome();
           },
@@ -219,6 +219,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
                       controller: emailtextcontroller,
                       validator: (m) {
                         if (m!.isEmpty) {
@@ -245,6 +246,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+
                       controller: passwordtextcontroller,
                       validator: (o) {
                         if (o!.isEmpty) {
@@ -299,6 +301,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+                      keyboardType: TextInputType.phone,
                       controller: phonenotextcontroller,
                       validator: (o) {
                         if (o!.isEmpty) {
@@ -328,6 +331,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
+                      keyboardType: TextInputType.number,
                       controller: experiencetextcontroller,
                       validator: (v) {
                         if (v!.isEmpty) {
