@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:house_keeping_pro/employee/employeeoldworks.dart';
 import 'package:house_keeping_pro/employee/profile.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -174,31 +175,32 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       ),
                     ),
                   ),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     // Handle the tap event here, like navigating to a different screen.
-                  //     // For example:
-                  //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  //       return Profile(); // Replace with the screen you want to navigate to.
-                  //     }));
-                  //   },
-                  //   child: Container(
-                  //     decoration: BoxDecoration(
-                  //       border: Border.all(color: Colors.black12),
-                  //       borderRadius: BorderRadius.circular(8.0),
-                  //     ),
-                  //     child: ListTile(
-                  //       leading: Icon(Icons.settings),
-                  //       title: Text(
-                  //         'Settings',
-                  //         style: TextStyle(
-                  //           color: Colors.black,
-                  //           fontSize: 20,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return Profile(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text(
+                          'Settings',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
@@ -217,6 +219,32 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                         leading: const Icon(Icons.task_rounded),
                         title: const Text(
                           'Status ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return EmployeeOldWorks(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: ListTile(
+                        shape: Border.all(color: Colors.black12),
+                        leading: const Icon(Icons.task_rounded),
+                        title: const Text(
+                          'completed work ',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -376,236 +404,242 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
               padding: const EdgeInsets.all(5),
               child: FutureBuilder(
                   future:getuserdata() ,
-                  builder: (context,AsyncSnapshot<dynamic> snapshot) {
+                  builder: (context,AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return  Center(
+                      return  const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
-                    if (snapshot.hasData) {
-
+                    if (snapshot.hasData && snapshot.data.length!=0) {
                       return SizedBox(height: MediaQuery.sizeOf(context).height/1.5,
                         child: ListView.builder(
                           itemCount:snapshot.data["data"].length,
                           itemBuilder: (context,index) {
 
 
-                            return Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Container(
-                                width: 130,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    children: [
-                                       SizedBox(
-                                        height: 18,
-                                      ),
-                                       Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
 
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(left: 25),
-                                                  child: Text(
-                                                    "booking_id  :",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:  EdgeInsets.only(left: 15),
-                                                  child: Text(snapshot.data["data"][index]["booking_id"].toString(),
+                              return Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Container(
+                                  width: 130,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 18,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
 
-                                                    style:  TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w500,
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  const Padding(
+                                                    padding: EdgeInsets.only(left: 25),
+                                                    child: Text(
+                                                      "booking_id  :",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight: FontWeight.bold),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
+                                                  Padding(
+                                                    padding:  EdgeInsets.only(left: 15),
+                                                    child: Text(snapshot.data["data"][index]["booking_id"].toString(),
 
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(left: 25),
-                                                  child: Text(
-                                                    "name  :",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:  EdgeInsets.only(left: 15),
-                                                  child: Text(snapshot.data["data"][index]["user_name"].toString(),
-
-                                                    style:  TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w500,
+                                                      style:  TextStyle(
+                                                        color: Colors.black87,
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(left: 25),
-                                                  child: Text(
-                                                    "date  :",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:  EdgeInsets.only(left: 15),
-                                                  child: Text(snapshot.data["data"][index]["date"].toString(),
-
-                                                    style:  TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: [
-
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(left: 25),
-                                                  child: Text(
-                                                    "address  :",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 15,
-                                                        fontWeight: FontWeight.bold),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:  EdgeInsets.only(left: 15),
-                                                  child: Text(
-                                                    snapshot.data["data"][index]["address"].toString(),
-                                                    style:  TextStyle(
-                                                      color: Colors.black87,
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-
-
-
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:  EdgeInsets.all(5),
-                                            child: ElevatedButton(
-                                                style: ButtonStyle(
-                                                    backgroundColor:
-                                                        MaterialStateProperty.all<Color>(
-                                                             Color(0xff5ac18e)),
-                                                    shape: MaterialStateProperty.all<
-                                                            RoundedRectangleBorder>(
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius.circular(10))),
-                                                    minimumSize:
-                                                        MaterialStateProperty.all<Size>(
-                                                             Size(150, 60))),
-                                                onPressed: () {
-                                                  approvebooking(snapshot.data["data"][index]["booking_id"].toString());
-                                                },
-                                                child:  Text(
-                                                  "Accept",
-                                                  style: TextStyle(color: Colors.black),
-                                                )),
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                          // Padding(
-                                          //   padding:  EdgeInsets.all(10),
-                                          //   child: ElevatedButton(
-                                          //       style: ButtonStyle(
-                                          //           backgroundColor:
-                                          //               MaterialStateProperty.all<Color>(
-                                          //                   Colors.white60),
-                                          //           shape: MaterialStateProperty.all<
-                                          //                   RoundedRectangleBorder>(
-                                          //               RoundedRectangleBorder(
-                                          //                   borderRadius:
-                                          //                       BorderRadius.circular(10))),
-                                          //           minimumSize:
-                                          //               MaterialStateProperty.all<Size>(
-                                          //                    Size(150, 60))),
-                                          //       onPressed: () {},
-                                          //       child:  Text(
-                                          //         "Reject",
-                                          //         style: TextStyle(color: Colors.black),
-                                          //       )),
-                                          // )
-                                        ],
-                                      )
-                                    ],
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(left: 25),
+                                                    child: Text(
+                                                      "name  :",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:  EdgeInsets.only(left: 15),
+                                                    child: Text(snapshot.data["data"][index]["user_name"].toString(),
+
+                                                      style:  TextStyle(
+                                                        color: Colors.black87,
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(left: 25),
+                                                    child: Text(
+                                                      "date  :",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:  EdgeInsets.only(left: 15),
+                                                    child: Text(snapshot.data["data"][index]["date"].toString(),
+
+                                                      style:  TextStyle(
+                                                        color: Colors.black87,
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(left: 25),
+                                                    child: Text(
+                                                      "address  :",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight: FontWeight.bold),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:  EdgeInsets.only(left: 15),
+                                                    child: Text(
+                                                      snapshot.data["data"][index]["address"].toString(),
+                                                      style:  TextStyle(
+                                                        color: Colors.black87,
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+
+
+
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding:  EdgeInsets.all(5),
+                                              child: ElevatedButton(
+                                                  style: ButtonStyle(
+                                                      backgroundColor:
+                                                      MaterialStateProperty.all<Color>(
+                                                          Color(0xff5ac18e)),
+                                                      shape: MaterialStateProperty.all<
+                                                          RoundedRectangleBorder>(
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                              BorderRadius.circular(10))),
+                                                      minimumSize:
+                                                      MaterialStateProperty.all<Size>(
+                                                          Size(150, 60))),
+                                                  onPressed: () {
+                                                    approvebooking(snapshot.data["data"][index]["booking_id"].toString());
+                                                    setState(() {
+
+                                                    });
+                                                  },
+                                                  child:  Text(
+                                                    "Accept",
+                                                    style: TextStyle(color: Colors.black),
+                                                  )),
+                                            ),
+                                            // Padding(
+                                            //   padding:  EdgeInsets.all(10),
+                                            //   child: ElevatedButton(
+                                            //       style: ButtonStyle(
+                                            //           backgroundColor:
+                                            //               MaterialStateProperty.all<Color>(
+                                            //                   Colors.white60),
+                                            //           shape: MaterialStateProperty.all<
+                                            //                   RoundedRectangleBorder>(
+                                            //               RoundedRectangleBorder(
+                                            //                   borderRadius:
+                                            //                       BorderRadius.circular(10))),
+                                            //           minimumSize:
+                                            //               MaterialStateProperty.all<Size>(
+                                            //                    Size(150, 60))),
+                                            //       onPressed: () {},
+                                            //       child:  Text(
+                                            //         "Reject",
+                                            //         style: TextStyle(color: Colors.black),
+                                            //       )),
+                                            // )
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
+                              );
+
                           }
                         ),
                       );
+                    }if(snapshot.hasError){
+                      return const Text("Snapshot error");
                     } else {
 
-                      return Text("somthing went wrong");
+                      return const Center(child: Text("No work data available"));
                     }
                   }),
             ),

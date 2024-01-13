@@ -7,14 +7,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../appConstants/appConstants.dart';
 import 'employeehomepage.dart';
 
-class ApproverUserStatus extends StatefulWidget {
-  const ApproverUserStatus({super.key});
+class EmployeeOldWorks extends StatefulWidget {
+  const EmployeeOldWorks({super.key});
 
   @override
-  State<ApproverUserStatus> createState() => _ApproverUserStatusState();
+  State<EmployeeOldWorks> createState() => _EmployeeOldWorksState();
 }
 
-class _ApproverUserStatusState extends State<ApproverUserStatus> {
+class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
+
   Future<dynamic> getuserdata() async {
     final url = "${AppConstants.url}employeebookingstatusview.php";
 
@@ -30,7 +31,6 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
       return body;
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +90,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -101,8 +101,8 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                            FontWeight
+                                                                .bold),
                                                       ),
                                                     ),
                                                     Padding(
@@ -110,14 +110,14 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                                [index]
-                                                                ["booking_id"]
+                                                        [index]
+                                                        ["booking_id"]
                                                             .toString(),
                                                         style: TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                          FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -132,7 +132,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -143,8 +143,8 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                            FontWeight
+                                                                .bold),
                                                       ),
                                                     ),
                                                     Padding(
@@ -152,14 +152,14 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                                [index]
-                                                                ["user_name"]
+                                                        [index]
+                                                        ["user_name"]
                                                             .toString(),
                                                         style: TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                          FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -174,7 +174,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -185,8 +185,8 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                            FontWeight
+                                                                .bold),
                                                       ),
                                                     ),
                                                     Padding(
@@ -194,13 +194,13 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                                [index]["date"]
+                                                        [index]["date"]
                                                             .toString(),
                                                         style: TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                          FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -215,7 +215,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -226,8 +226,8 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                            FontWeight
+                                                                .bold),
                                                       ),
                                                     ),
                                                     Padding(
@@ -235,14 +235,14 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                                [index]
-                                                                ["address"]
+                                                        [index]
+                                                        ["address"]
                                                             .toString(),
                                                         style: TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                          FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -257,7 +257,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Padding(
                                                       padding: EdgeInsets.only(
@@ -268,8 +268,8 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                            FontWeight
+                                                                .bold),
                                                       ),
                                                     ),
                                                     Padding(
@@ -277,14 +277,14 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                                [index]
-                                                                ["phone_number"]
+                                                        [index]
+                                                        ["phone_number"]
                                                             .toString(),
                                                         style: TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                          FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -293,48 +293,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                                               ],
                                             ),
                                           ),
-                                          Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: 25),
-                                                      child: Text(
-                                                        "Status  :",
-                                                        style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: 15),
-                                                      child: Text(
-                                                        snapshot.data["data"]
-                                                                [index]
-                                                                ["status"]
-                                                            .toString(),
-                                                        style: TextStyle(
-                                                          color: Colors.black87,
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
+                                          
                                         ],
                                       ),
                                     ),
@@ -354,16 +313,16 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
                   height: 65,
                   width: 250,
                   decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  BoxDecoration(borderRadius: BorderRadius.circular(50)),
                   child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                               Color(0xff5ac18e)),
                           shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10)))),
+                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                  borderRadius:
+                                  BorderRadius.circular(10)))),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) {
@@ -379,6 +338,7 @@ class _ApproverUserStatusState extends State<ApproverUserStatus> {
           ),
         ),
       ),
+
     );
   }
 }

@@ -224,13 +224,17 @@ class _BookingSummeryState extends State<BookingSummery> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 110),
-                                  child: Text(
-                                    snapshot.data["data"]["address"].toString(),
-                                    style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 18,
-                                    ),
+                                  padding: const EdgeInsets.only(left: 70),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        snapshot.data["data"]["address"].toString(),
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

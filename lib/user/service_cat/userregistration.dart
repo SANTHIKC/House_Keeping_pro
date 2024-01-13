@@ -52,6 +52,14 @@ class _UserRegistrationState extends State<UserRegistration> {
     }
   }
 
+  bool _isVisible = false;
+
+  void updateStatus() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
+
   var formkey = GlobalKey<FormState>();
   File? pickedImage;
 
@@ -222,6 +230,7 @@ class _UserRegistrationState extends State<UserRegistration> {
                     child: TextFormField(
 
                       controller: passwordtextcontroller,
+                      obscureText: _isVisible ? false : true,
                       validator: (o) {
                         if (o!.isEmpty)  {
                           return "enter password";
@@ -232,7 +241,11 @@ class _UserRegistrationState extends State<UserRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "password",
-                        suffixIcon: const Icon(Icons.remove_red_eye),
+                        suffixIcon: IconButton(
+                          onPressed: () => updateStatus(),
+                          icon:
+                          Icon(_isVisible ? Icons.visibility : Icons.visibility_off),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

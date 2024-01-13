@@ -22,6 +22,14 @@ class _SigninhomeState extends State<Signinhome> {
   TextEditingController usernametextcontroller = TextEditingController();
   TextEditingController passwordtextcontroller = TextEditingController();
 
+  bool passwordVisible=false;
+
+  @override
+  void initState(){
+    super.initState();
+    passwordVisible=true;
+  }
+
 
   postUserData() async {
 
@@ -132,7 +140,7 @@ class _SigninhomeState extends State<Signinhome> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Username",
+                      "Email",
                       style: TextStyle(
                           color:  Color(0x995ac18e),
                           fontSize: 16,
@@ -165,7 +173,7 @@ class _SigninhomeState extends State<Signinhome> {
                             Icons.account_circle_outlined,
                             color: Color(0xff5ac18e),
                           ),
-                          hintText: "Username",
+                          hintText: "Email",
                           hintStyle: TextStyle(
                             color: Colors.black38,
                           ),
@@ -203,22 +211,39 @@ class _SigninhomeState extends State<Signinhome> {
                         ],
                       ),
                       height: 60,
+
                       child: TextField(
                         controller: passwordtextcontroller,
-                        style: const TextStyle(color: Colors.black87),
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.only(top: 14),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Color(0xff5ac18e),
-                          ),
-                          hintText: "Password",
-                          hintStyle: TextStyle(
-                            color: Colors.black38,
-                          ),
+                      obscureText: passwordVisible,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 14),
+                        prefixIcon: Icon(
+                                            Icons.lock,
+                                            color: Color(0xff5ac18e),
+                                          ),
+                        hintText: "Password",
+
+                        helperStyle:TextStyle( color: Colors.black38,),
+                        suffixIcon: IconButton(
+                          icon: Icon(passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                          onPressed: () {
+                            setState(
+                                  () {
+                                passwordVisible = !passwordVisible;
+                              },
+                            );
+                          },
                         ),
+
+
                       ),
+                      keyboardType: TextInputType.visiblePassword,
+                      textInputAction: TextInputAction.done,
+                    ),
+
                     ),
                   ]),
               const SizedBox(

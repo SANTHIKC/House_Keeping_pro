@@ -70,6 +70,15 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   ];
   String dropdownValue = "Electrical Work";
 
+  bool _isVisible = false;
+
+  void updateStatus() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
+
+
 
   var formkey = GlobalKey<FormState>();
   File? pickedImage;
@@ -247,7 +256,9 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
 
+
                       controller: passwordtextcontroller,
+                      obscureText: _isVisible ? false : true,
                       validator: (o) {
                         if (o!.isEmpty) {
                           return "enter password";
@@ -258,7 +269,11 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "password",
-                        suffixIcon: Icon(Icons.remove_red_eye),
+                        suffixIcon: IconButton(
+                          onPressed: () => updateStatus(),
+                          icon:
+                          Icon(_isVisible ? Icons.visibility : Icons.visibility_off),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
