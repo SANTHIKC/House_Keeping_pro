@@ -88,10 +88,10 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
-          height: 200,
+          height: 190,
           child: Container(
             color: Colors.white,
-            height: 250,
+            height: 230,
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Column(
@@ -144,7 +144,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -158,21 +158,19 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       Stack(
                         children: [
                           Container(
-                            decoration: BoxDecoration(
+                            decoration:BoxDecoration(
                               border: Border.all(width: 1),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(90),
-                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(90),),
                             ),
                             child: ClipOval(
-                              child: pickedImage != null
-                                  ? Image.file(
-                                      pickedImage!,
-                                      width: 170,
-                                      height: 170,
-                                      fit: BoxFit.cover,
-                                    )
-                                  : Image.asset('assetss/profilepic.jpg'),
+
+                              child  :
+                              pickedImage !=null ?Image.file(pickedImage!,
+                                width:170,
+                                height: 170,
+                                fit: BoxFit.cover,) :
+
+                              Image.asset('assetss/profilepic.jpg'),
                             ),
                           ),
                           Positioned(

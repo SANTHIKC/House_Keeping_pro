@@ -150,7 +150,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                     snapshot.data["data"]["name"].toString(),
                                     style: const TextStyle(
                                       color: Colors.black,
-                                      fontSize: 25,
+                                      fontSize: 20,
                                         fontWeight: FontWeight.bold
                                     ),
                                   ),
@@ -169,7 +169,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                     snapshot.data["data"]["email"],
                                     style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 25,
+                                fontSize: 20,
                                       fontWeight: FontWeight.bold
                               ),
                                   ),
@@ -357,58 +357,33 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                           children: [
                             Padding(
                               padding:  EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 50,
-                                    backgroundImage: NetworkImage(
-                                        "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
-                                  ),
-                                  // const Icon(
-                                  //   Icons.notifications_outlined,
-                                  //   color: Colors.black,
-                                  //   size: 35,
-                                  // ),
-                                ],
+                              child: CircleAvatar(
+                                radius: 50,
+                                backgroundImage: NetworkImage(
+                                    "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
                               ),
                             ),
                             const SizedBox(
                               height: 15,
                             ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Text(
-                                    snapshot.data["data"]["name"].toString(),
-                                    style: const TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              snapshot.data["data"]["name"].toString(),
+                              style: const TextStyle(
+                                color: Colors.black87,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Text(
-                                    snapshot.data["data"]["email"].toString(),
-                                    style: const TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              snapshot.data["data"]["email"].toString(),
+                              style: const TextStyle(
+                                color: Colors.black87,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
 
 

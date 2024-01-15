@@ -121,7 +121,7 @@ class _UserRegistrationState extends State<UserRegistration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+
       body:SafeArea(
         child: SingleChildScrollView(
           child: Padding(
