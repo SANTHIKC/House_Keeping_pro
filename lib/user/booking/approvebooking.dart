@@ -59,7 +59,7 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                           child: CircularProgressIndicator(),
                         );
                       }
-                      if (snapshot.hasData) {
+                      if (snapshot.hasData && snapshot.data.length!=0) {
 
                         return SizedBox(height: MediaQuery.sizeOf(context).height/1.5,
                           child: ListView.builder(
@@ -262,9 +262,11 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                               }
                           ),
                         );
+                      } if(snapshot.hasError){
+                        return const Text("Snapshot error");
                       } else {
 
-                        return Text("somthing went wrong");
+                        return const Center(child: Text("No work data available"));
                       }
                     }),
               ),

@@ -291,16 +291,7 @@ class _SigninhomeState extends State<Signinhome> {
                           return const Alertloginpage();
                         },
                       ));
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const AlertDialog(
-                            title: Text("messege"),
-                            content: Text(
-                                " Do you want to register as a User or Employee "),
-                          );
-                        },
-                      );
+
                     },
                     child: const Text(
                       'Register Now',

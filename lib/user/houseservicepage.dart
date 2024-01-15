@@ -124,37 +124,40 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     );
                   }
                   if (snapshot.hasData) {
-                    return Container(
-                      color: const Color(0xcc5ac18e),
-                      width: double.infinity,
-                      height: 300,
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage: NetworkImage(
-                                "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            snapshot.data["data"]["user_name"].toString(),
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
+                    return SizedBox(
+                      child: Container(
+                        color: const Color(0xcc5ac18e),
+                        width: double.infinity,
+
+                        height: 200,
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                  "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
                             ),
-                          ),
-                          Text(
-                            snapshot.data["data"]["email"].toString(),
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
+                            const SizedBox(
+                              height: 15,
                             ),
-                          ),
-                        ],
+                            Text(
+                              snapshot.data["data"]["user_name"].toString(),
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              snapshot.data["data"]["email"].toString(),
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   } else {
@@ -359,35 +362,6 @@ class _HouseServicepageState extends State<HouseServicepage> {
                                   ],
                                 ),
                               ),
-                              // Padding(
-                              //   padding: EdgeInsets.only(left: 15),
-                              //   child: Row(
-                              //     children: [
-                              //       ElevatedButton(
-                              //           style: ButtonStyle(
-                              //               backgroundColor:
-                              //               MaterialStateProperty.all<Color>(
-                              //                   Colors.white60),
-                              //               shape: MaterialStateProperty.all<
-                              //                   RoundedRectangleBorder>(
-                              //                   RoundedRectangleBorder(
-                              //                       borderRadius:
-                              //                       BorderRadius.circular(10))),
-                              //               minimumSize:
-                              //               MaterialStateProperty.all<Size>(
-                              //                   Size(150, 60))),
-                              //           onPressed: () {
-                              //             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                              //               return ApprovebookingView();
-                              //             },));
-                              //           },
-                              //           child:  Text(
-                              //             "Click here",
-                              //             style: TextStyle(color: Colors.blue,fontSize: 25),
-                              //           )),
-                              //     ],
-                              //   ),
-                              // ),
                             ],
                           ),
                         );

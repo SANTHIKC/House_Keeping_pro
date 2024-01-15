@@ -111,35 +111,73 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       );
                     }
                     if (snapshot.hasData) {
-                      return Container(
-                        color: const Color(0xcc5ac18e),
+                      return
+                        Container(
+                        // color: const Color(0xcc5ac18e),
                         width: double.infinity,
-                        height: 300,
-                        padding: const EdgeInsets.only(top: 20),
+                        height: 220,
+                        padding: const EdgeInsets.only(top: 10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundImage: NetworkImage(
-                                  "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration:BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      image: DecorationImage(image: NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),fit: BoxFit.fill ),
+                                      border: Border.all(color: Colors.black26),
+                                      
+                                    ) ,
+                                    
+                                  )
+
+                                ],
+                              ),
                             ),
                             const SizedBox(
-                              height: 15,
+                              height: 10,
                             ),
-                            Text(
-                              snapshot.data["data"]["name"].toString(),
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    snapshot.data["data"]["name"].toString(),
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 25,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Text(
-                              snapshot.data["data"]["email"],
-                              style: const TextStyle(
+                            SizedBox(
+                              height: 10,
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50,),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    snapshot.data["data"]["email"],
+                                    style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 20,
+                                fontSize: 25,
+                                      fontWeight: FontWeight.bold
                               ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
                             ),
                           ],
                         ),

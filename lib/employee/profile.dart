@@ -33,224 +33,344 @@ class _ProfileState extends State<Profile> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:  Column(
-        children: [
-          FutureBuilder(
-              future: getdata(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                if (snapshot.hasData) {
-                  return Container(
-                    color: const Color(0xcc5ac18e),
-                    width: double.infinity,
-                    height: 400,
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: CircleAvatar(
-                                radius:70,
-                                backgroundImage: NetworkImage(
-                                    "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
-                              ),
-                            ),
+    return SafeArea(
+
+      child: Scaffold(
+        // appBar: AppBar(elevation: 0,
+        //
+        //   backgroundColor: Colors.white24,),
+        body:  Column(
+          children: [
+
+            FutureBuilder(
+                future: getdata(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.hasData) {
+                    return Container(
+                      height: 280,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0x665ac18e),
+                            Color(0x995ac18e),
                           ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                         ),
-
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                snapshot.data["data"]["name"].toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                snapshot.data["data"]["email"].toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                snapshot.data["data"]["address"].toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                snapshot.data["data"]["phone_number"].toString(),
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                      ],
-                    ),
-                  );
-                } else {
-                  return const Text("somthing went wrong");
-                }
-              }),
-
-          Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  // Handle the tap event here, like navigating to a different screen.
-                  // For example:
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return Profile(); // Replace with the screen you want to navigate to.
-                  }));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black12),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: ListTile(
-                    leading: Icon(Icons.person),
-                    title: Text(
-                      'Profile',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                    ),
-                  ),
-                ),
-              ),
-              // GestureDetector(
-              //   onTap: () {
-              //     // Handle the tap event here, like navigating to a different screen.
-              //     // For example:
-              //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              //       return Profile(); // Replace with the screen you want to navigate to.
-              //     }));
-              //   },
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       border: Border.all(color: Colors.black12),
-              //       borderRadius: BorderRadius.circular(8.0),
-              //     ),
-              //     child: ListTile(
-              //       leading: Icon(Icons.settings),
-              //       title: Text(
-              //         'Settings',
-              //         style: TextStyle(
-              //           color: Colors.black,
-              //           fontSize: 20,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              GestureDetector(
-                onTap: () {
-                  // Handle the tap event here, like navigating to a different screen.
-                  // For example:
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return ApproverUserStatus(); // Replace with the screen you want to navigate to.
-                  }));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black12),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: ListTile(
-                    shape: Border.all(color: Colors.black12),
-                    leading: const Icon(Icons.task_rounded),
-                    title: const Text(
-                      'Status ',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding:  EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: NetworkImage(
+                                      "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                ),
+                                // const Icon(
+                                //   Icons.notifications_outlined,
+                                //   color: Colors.black,
+                                //   size: 35,
+                                // ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  snapshot.data["data"]["name"].toString(),
+                                  style: const TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  snapshot.data["data"]["email"].toString(),
+                                  style: const TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  snapshot.data["data"]["address"].toString(),
+                                  style: const TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  snapshot.data["data"]["phone_number"].toString(),
+                                  style: const TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+
+
+                        ],
                       ),
-                    ),
-                  ),
-                ),
-              ),
-              GestureDetector(
-  
-                onTap: () async{
-                  SharedPreferences sharedpref=await SharedPreferences.getInstance();
-                  await sharedpref.clear();
-                  // Handle the tap event here, like navigating to a different screen.
-                  // For example:
-                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(BuildContext context) =>Signinhome() ,), (route) => false);
-                },
-                child: Container(
+                    );
+                    //   Container(
+                    //   color: const Color(0xcc5ac18e),
+                    //   width: double.infinity,
+                    //   height: 400,
+                    //   padding: const EdgeInsets.only(top: 20),
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       SizedBox(
+                    //         height: 30,
+                    //       ),
+                    //       Row(
+                    //         children: [
+                    //           Padding(
+                    //             padding: const EdgeInsets.all(20),
+                    //             child: CircleAvatar(
+                    //               radius:70,
+                    //               backgroundImage: NetworkImage(
+                    //                   "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //
+                    //       const SizedBox(
+                    //         height: 5,
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(left: 30,bottom: 10),
+                    //         child: Row(
+                    //           children: [
+                    //             Text(
+                    //               snapshot.data["data"]["name"].toString(),
+                    //               style: const TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 20,
+                    //               ),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(left: 30,bottom: 10),
+                    //         child: Row(
+                    //           children: [
+                    //             Text(
+                    //               snapshot.data["data"]["email"].toString(),
+                    //               style: const TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 20,
+                    //               ),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(left: 30,bottom: 10),
+                    //         child: Row(
+                    //           children: [
+                    //             Text(
+                    //               snapshot.data["data"]["address"].toString(),
+                    //               style: const TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 20,
+                    //               ),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(left: 30,bottom: 10),
+                    //         child: Row(
+                    //           children: [
+                    //             Text(
+                    //               snapshot.data["data"]["phone_number"].toString(),
+                    //               style: const TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 20,
+                    //               ),
+                    //             ),
+                    //
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       SizedBox(
+                    //         height: 5,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // );
+                  } else {
+                    return const Text("somthing went wrong");
+                  }
+                }),
+
+            Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return Profile(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black12),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    child:  ListTile(
-                      leading: Icon(Icons.logout),
+                    child: ListTile(
+                      leading: Icon(Icons.person),
                       title: Text(
-                        'Logout',
+                        'Profile',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,
                         ),
                       ),
-                    )
+                    ),
+                  ),
                 ),
-              ),
+                // GestureDetector(
+                //   onTap: () {
+                //     // Handle the tap event here, like navigating to a different screen.
+                //     // For example:
+                //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                //       return Profile(); // Replace with the screen you want to navigate to.
+                //     }));
+                //   },
+                //   child: Container(
+                //     decoration: BoxDecoration(
+                //       border: Border.all(color: Colors.black12),
+                //       borderRadius: BorderRadius.circular(8.0),
+                //     ),
+                //     child: ListTile(
+                //       leading: Icon(Icons.settings),
+                //       title: Text(
+                //         'Settings',
+                //         style: TextStyle(
+                //           color: Colors.black,
+                //           fontSize: 20,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: ListTile(
+                      shape: Border.all(color: Colors.black12),
+                      leading: const Icon(Icons.task_rounded),
+                      title: const Text(
+                        'Status ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+  
+                  onTap: () async{
+                    SharedPreferences sharedpref=await SharedPreferences.getInstance();
+                    await sharedpref.clear();
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder:(BuildContext context) =>Signinhome() ,), (route) => false);
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child:  ListTile(
+                        leading: Icon(Icons.logout),
+                        title: Text(
+                          'Logout',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      )
+                  ),
+                ),
 
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

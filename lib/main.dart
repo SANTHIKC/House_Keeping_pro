@@ -1,3 +1,4 @@
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:house_keeping_pro/homescreen/loginhomepage.dart';
 
@@ -38,10 +39,47 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+
+
       ),
-      home:Signinhome (),
+      home:FlutterSplashScreen(
+        duration: const Duration(milliseconds: 2000),
+        nextScreen: const Signinhome(),
+        backgroundColor: Colors.white,
+        splashScreenBody: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 100,
+              ),
+
+              const Spacer(),
+              Container(
+                margin:
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                height: 200,
+                width: 200,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black12),
+                    image: const DecorationImage(
+                        image: AssetImage('assetss/homeshine.jpg'),
+                        fit: BoxFit.fill),
+                    borderRadius:
+                    const BorderRadius.all(Radius.circular(100))),
+              ),
+              const Spacer(),
+
+              const SizedBox(
+                height: 100,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
