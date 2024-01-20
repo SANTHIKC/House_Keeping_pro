@@ -112,74 +112,72 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       );
                     }
                     if (snapshot.hasData) {
-                      return Container(
-                        // color: const Color(0xcc5ac18e),
-                        width: double.infinity,
-                        height: 220,
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 50),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
-                                          fit: BoxFit.fill),
-                                      border: Border.all(color: Colors.black26),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 50),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    snapshot.data["data"]["name"].toString(),
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 70,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 50),
+                            child: Row(
+                              children: [
+
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                        fit: BoxFit.fill),
+                                    border: Border.all(color: Colors.black26),
                                   ),
-                                ],
-                              ),
+                                )
+                              ],
                             ),
-                            const SizedBox(
-                              height: 10,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 50),
+                            child: Row(
+                              children: [
+                                Text(
+                                  snapshot.data["data"]["name"].toString(),
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 50,
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    snapshot.data["data"]["email"],
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 50,
                             ),
-                            const SizedBox(
-                              height: 10,
+                            child: Row(
+                              children: [
+                                Text(
+                                  snapshot.data["data"]["email"],
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
                       );
                     } else {
                       return const Text("somthing went wrong");
@@ -187,6 +185,35 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   }),
               Column(
                 children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) {
+                            return const Profile(); // Replace with the screen you want to navigate to.
+                          }));
+                    },
+                    child: Container(
+
+                      child: const ListTile(
+                        leading: Icon(Icons.person),
+                        title: Text(
+                          'Profile',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   GestureDetector(
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
@@ -197,12 +224,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       }));
                     },
                     child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+
                       child: ListTile(
-                        shape: Border.all(color: Colors.black12),
+
                         leading: const Icon(Icons.task_rounded),
                         title: const Text(
                           'Status ',
@@ -240,32 +264,10 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                   //     ),
                   //   ),
                   // ),
-                  GestureDetector(
-                    onTap: () {
-                      // Handle the tap event here, like navigating to a different screen.
-                      // For example:
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) {
-                        return const Profile(); // Replace with the screen you want to navigate to.
-                      }));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: const ListTile(
-                        leading: Icon(Icons.person),
-                        title: Text(
-                          'Profile',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
+                  SizedBox(
+                    height: 20,
                   ),
+
                   GestureDetector(
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
@@ -276,12 +278,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       }));
                     },
                     child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+
                       child: ListTile(
-                        shape: Border.all(color: Colors.black12),
+
                         leading: const Icon(Icons.task_rounded),
                         title: const Text(
                           'completed work ',
@@ -293,6 +292,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   GestureDetector(
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
@@ -303,10 +305,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       }));
                     },
                     child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
+
                         child: const ListTile(
                           leading: Icon(Icons.logout),
                           title: Text(
