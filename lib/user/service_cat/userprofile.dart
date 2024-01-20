@@ -30,10 +30,10 @@ class _UserProfileState extends State<UserProfile> {
       return body;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
         children: [
           FutureBuilder(
@@ -45,200 +45,227 @@ class _UserProfileState extends State<UserProfile> {
                   );
                 }
                 if (snapshot.hasData) {
-                  return Container(
-
-                    color: Color(0xcc5ac18e),
-                    width: double.infinity,
-
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: CircleAvatar(
-                                radius:70,
-                                backgroundImage: NetworkImage(
-                                    "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
-                              ),
+                  return Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      height: 290,
+                      // width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assetss/background.webp'),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.all(Radius.circular(110)),
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Center(
+                            child: CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                  "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
                             ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
                                 snapshot.data["data"]["user_name"].toString(),
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 20,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-
-                            ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
                                 snapshot.data["data"]["email"].toString(),
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 20,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-
-                            ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
                                 snapshot.data["data"]["address"].toString(),
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 20,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-
-                            ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30,bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                snapshot.data["data"]["phone_number"].toString(),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
+                                snapshot.data["data"]["phone_number"]
+                                    .toString(),
                                 style: const TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 20,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
-
-                            ],
+                            ),
                           ),
-                        ),
-
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 } else {
                   return const Text("somthing went wrong");
                 }
               }),
-          GestureDetector(
-            onTap: () {
-              // Handle the tap event here, like navigating to a different screen.
-              // For example:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return UserProfile(); // Replace with the screen you want to navigate to.
-              }));
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black12),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: ListTile(
-                leading: Icon(Icons.person),
-                title: Text(
-                  'Profile',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          // GestureDetector(
-          //   onTap: () {
-          //     // Handle the tap event here, like navigating to a different screen.
-          //     // For example:
-          //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          //       return UserProfile(); // Replace with the screen you want to navigate to.
-          //     }));
-          //   },
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //       border: Border.all(color: Colors.black12),
-          //       borderRadius: BorderRadius.circular(8.0),
-          //     ),
-          //     child: ListTile(
-          //       leading: Icon(Icons.settings),
-          //       title: Text(
-          //         'Settings',
-          //         style: TextStyle(
-          //           color: Colors.black,
-          //           fontSize: 20,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          GestureDetector(
-            onTap: () {
-              // Handle the tap event here, like navigating to a different screen.
-              // For example:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return ApprovebookingView(); // Replace with the screen you want to navigate to.
-              }));
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black12),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: ListTile(
-                shape: Border.all(color: Colors.black12),
-                leading: const Icon(Icons.task_rounded),
-                title: const Text(
-                  'Status ',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              // Handle the tap event here, like navigating to a different screen.
-              // For example:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Signinhome(); // Replace with the screen you want to navigate to.
-              }));
-            },
-            child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child:  ListTile(
-                  leading: Icon(Icons.logout),
-                  title: Text(
-                    'Logout',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 25, right: 25, bottom: 25, top: 25),
+                child: GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return UserProfile(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text(
+                        'Profile',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
                   ),
-                )
-            ),
-          ),
+                ),
+              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 25,right: 25,bottom: 25),
+              //   child: GestureDetector(
+              //     onTap: () {
+              //       // Handle the tap event here, like navigating to a different screen.
+              //       // For example:
+              //       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              //         return UserProfile(); // Replace with the screen you want to navigate to.
+              //       }));
+              //     },
+              //     child: Container(
+              //       decoration: BoxDecoration(
+              //         border: Border.all(color: Colors.black12),
+              //         borderRadius: BorderRadius.circular(8.0),
+              //       ),
+              //       child: ListTile(
+              //         leading: Icon(Icons.settings),
+              //         title: Text(
+              //           'Settings',
+              //           style: TextStyle(
+              //             color: Colors.black,
+              //             fontSize: 20,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
 
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+                child: GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return ApprovebookingView(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black12),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: ListTile(
+                      shape: Border.all(color: Colors.black12),
+                      title: const Text(
+                        'Status ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                      leading: const Icon(Icons.task_rounded),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25),
+                child: GestureDetector(
+                  onTap: () async {
+                    SharedPreferences sharedpref =
+                    await SharedPreferences.getInstance();
+                    await sharedpref.clear();
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => Signinhome(),
+                        ),
+                            (route) => false);
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.logout),
+                        title: Text(
+                          'Logout',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      )),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

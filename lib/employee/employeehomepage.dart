@@ -43,7 +43,10 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     print("hiii");
     print(emp_type);
 
-    var response = await post(Uri.parse(url1), body: {"service_type": emp_type},);
+    var response = await post(
+      Uri.parse(url1),
+      body: {"service_type": emp_type},
+    );
     print(response);
     var body;
     print(response.statusCode);
@@ -51,11 +54,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
       print(response.body);
       body = jsonDecode(response.body);
       print(body.runtimeType);
-
     }
     return body;
   }
-
 
   Future<void> approvebooking(bookingid) async {
     final url = "${AppConstants.url}approvebooking.php";
@@ -63,8 +64,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     String? emp_id = prefs.getString("employee_id");
     print(emp_id);
 
-
-    final response = await post(Uri.parse(url),body:{"booking_id":bookingid,"emp_id": emp_id });
+    final response = await post(Uri.parse(url),
+        body: {"booking_id": bookingid, "emp_id": emp_id});
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
@@ -74,15 +75,12 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     }
   }
 
-
-
   int _currentIndex = 0;
 
-
   List<Widget> _screens = [
-    EmployeeHomePage(),
-    ApproverUserStatus(),
-    Profile(),
+    const EmployeeHomePage(),
+    const ApproverUserStatus(),
+    const Profile(),
   ];
 
   @override
@@ -90,12 +88,15 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        title: Text(
+        title: const Text(
           "Home Shine",
-          style: TextStyle(color: Colors.black, fontStyle: FontStyle.normal,fontSize: 30,),
+          style: TextStyle(
+            color: Colors.black,
+            fontStyle: FontStyle.normal,
+            fontSize: 30,
+          ),
         ),
         backgroundColor: Colors.white24,
-
       ),
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
@@ -111,8 +112,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       );
                     }
                     if (snapshot.hasData) {
-                      return
-                        Container(
+                      return Container(
                         // color: const Color(0xcc5ac18e),
                         width: double.infinity,
                         height: 220,
@@ -127,15 +127,15 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                   Container(
                                     width: 100,
                                     height: 100,
-                                    decoration:BoxDecoration(
+                                    decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      image: DecorationImage(image: NetworkImage("${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),fit: BoxFit.fill ),
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                          fit: BoxFit.fill),
                                       border: Border.all(color: Colors.black26),
-                                      
-                                    ) ,
-                                    
+                                    ),
                                   )
-
                                 ],
                               ),
                             ),
@@ -149,34 +149,33 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                   Text(
                                     snapshot.data["data"]["name"].toString(),
                                     style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                        fontWeight: FontWeight.bold
-                                    ),
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-
                             Padding(
-                              padding: const EdgeInsets.only(left: 50,),
+                              padding: const EdgeInsets.only(
+                                left: 50,
+                              ),
                               child: Row(
                                 children: [
                                   Text(
                                     snapshot.data["data"]["email"],
-                                    style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                      fontWeight: FontWeight.bold
-                              ),
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                           ],
@@ -192,59 +191,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
                       // For example:
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
-                        return Profile(); // Replace with the screen you want to navigate to.
-                      }));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: ListTile(
-                        leading: Icon(Icons.person),
-                        title: Text(
-                          'Profile',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  GestureDetector(
-                    onTap: () {
-                      // Handle the tap event here, like navigating to a different screen.
-                      // For example:
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return Profile(); // Replace with the screen you want to navigate to.
-                      }));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text(
-                          'Settings',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      // Handle the tap event here, like navigating to a different screen.
-                      // For example:
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return ApproverUserStatus(); // Replace with the screen you want to navigate to.
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const ApproverUserStatus(); // Replace with the screen you want to navigate to.
                       }));
                     },
                     child: Container(
@@ -265,12 +214,65 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                       ),
                     ),
                   ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     // Handle the tap event here, like navigating to a different screen.
+                  //     // For example:
+                  //     Navigator.of(context)
+                  //         .push(MaterialPageRoute(builder: (context) {
+                  //       return Profile(); // Replace with the screen you want to navigate to.
+                  //     }));
+                  //   },
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       border: Border.all(color: Colors.black12),
+                  //       borderRadius: BorderRadius.circular(8.0),
+                  //     ),
+                  //     child: ListTile(
+                  //       leading: Icon(Icons.settings),
+                  //       title: Text(
+                  //         'Settings',
+                  //         style: TextStyle(
+                  //           color: Colors.black,
+                  //           fontSize: 20,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   GestureDetector(
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
                       // For example:
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return EmployeeOldWorks(); // Replace with the screen you want to navigate to.
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) {
+                        return const Profile(); // Replace with the screen you want to navigate to.
+                      }));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black12),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: const ListTile(
+                        leading: Icon(Icons.person),
+                        title: Text(
+                          'Profile',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Handle the tap event here, like navigating to a different screen.
+                      // For example:
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const EmployeeOldWorks(); // Replace with the screen you want to navigate to.
                       }));
                     },
                     child: Container(
@@ -295,8 +297,9 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                     onTap: () {
                       // Handle the tap event here, like navigating to a different screen.
                       // For example:
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return Signinhome(); // Replace with the screen you want to navigate to.
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const Signinhome(); // Replace with the screen you want to navigate to.
                       }));
                     },
                     child: Container(
@@ -304,7 +307,7 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                           border: Border.all(color: Colors.black12),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        child:  ListTile(
+                        child: const ListTile(
                           leading: Icon(Icons.logout),
                           title: Text(
                             'Logout',
@@ -313,10 +316,8 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                               fontSize: 20,
                             ),
                           ),
-                        )
-                    ),
+                        )),
                   ),
-
                 ],
               )
             ],
@@ -327,110 +328,97 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: [
-
             Padding(
-              padding:  EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: FutureBuilder(
                   future: getdata(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return  Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
                     if (snapshot.hasData) {
                       return Container(
-                        height: 250,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0x665ac18e),
-                              Color(0x995ac18e),
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        height: 200,
+                        // width: MediaQuery.of(context).size.width,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assetss/background.webp'),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
                         ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.all(8.0),
-                              child: CircleAvatar(
-                                radius: 50,
-                                backgroundImage: NetworkImage(
-                                    "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                        child: Center(
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
                               ),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Text(
-                              snapshot.data["data"]["name"].toString(),
-                              style: const TextStyle(
-                                color: Colors.black87,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
+                              Center(
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: NetworkImage(
+                                      "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              snapshot.data["data"]["email"].toString(),
-                              style: const TextStyle(
-                                color: Colors.black87,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
+                              const SizedBox(
+                                height: 15,
                               ),
-                            ),
-
-
-
-                          ],
+                              Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    snapshot.data["data"]["name"].toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     } else {
-                      return  Text("No data here");
+                      return const Text("No data here");
                     }
                   }),
             ),
-             SizedBox(
+            const SizedBox(
               height: 15,
             ),
-             SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Padding(
-                padding:  EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 15),
                 child: Text("Working Schedules",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w800,
                       color: Colors.black.withOpacity(0.7),
                     ))),
-             SizedBox(
+            const SizedBox(
               height: 22,
             ),
             Padding(
               padding: const EdgeInsets.all(5),
               child: FutureBuilder(
-                  future:getuserdata() ,
-                  builder: (context,AsyncSnapshot snapshot) {
+                  future: getuserdata(),
+                  builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return  const Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
-                    if (snapshot.hasData && snapshot.data.length!=0) {
-                      return SizedBox(height: MediaQuery.sizeOf(context).height/1.5,
+                    if (snapshot.hasData && snapshot.data.length != 0) {
+                      return SizedBox(
+                        height: MediaQuery.sizeOf(context).height / 1.5,
                         child: ListView.builder(
-                          itemCount:snapshot.data["data"].length,
-                          itemBuilder: (context,index) {
-
-
-
+                            itemCount: snapshot.data["data"].length,
+                            itemBuilder: (context, index) {
                               return Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Container(
@@ -444,35 +432,42 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 18,
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   const Padding(
-                                                    padding: EdgeInsets.only(left: 25),
+                                                    padding: EdgeInsets.only(
+                                                        left: 25),
                                                     child: Text(
                                                       "booking_id  :",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 15,
-                                                          fontWeight: FontWeight.bold),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding:  EdgeInsets.only(left: 15),
-                                                    child: Text(snapshot.data["data"][index]["booking_id"].toString(),
-
-                                                      style:  TextStyle(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 15),
+                                                    child: Text(
+                                                      snapshot.data["data"]
+                                                              [index]
+                                                              ["booking_id"]
+                                                          .toString(),
+                                                      style: const TextStyle(
                                                         color: Colors.black87,
                                                         fontSize: 20,
-                                                        fontWeight: FontWeight.w500,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                   ),
@@ -482,31 +477,38 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
-                                                  Padding(
-                                                    padding: EdgeInsets.only(left: 25),
+                                                  const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 25),
                                                     child: Text(
                                                       "name  :",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 15,
-                                                          fontWeight: FontWeight.bold),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding:  EdgeInsets.only(left: 15),
-                                                    child: Text(snapshot.data["data"][index]["user_name"].toString(),
-
-                                                      style:  TextStyle(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 15),
+                                                    child: Text(
+                                                      snapshot.data["data"]
+                                                              [index]
+                                                              ["user_name"]
+                                                          .toString(),
+                                                      style: const TextStyle(
                                                         color: Colors.black87,
                                                         fontSize: 20,
-                                                        fontWeight: FontWeight.w500,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                   ),
@@ -516,31 +518,37 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
-                                                  Padding(
-                                                    padding: EdgeInsets.only(left: 25),
+                                                  const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 25),
                                                     child: Text(
                                                       "date  :",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 15,
-                                                          fontWeight: FontWeight.bold),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding:  EdgeInsets.only(left: 15),
-                                                    child: Text(snapshot.data["data"][index]["date"].toString(),
-
-                                                      style:  TextStyle(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 15),
+                                                    child: Text(
+                                                      snapshot.data["data"]
+                                                              [index]["date"]
+                                                          .toString(),
+                                                      style: const TextStyle(
                                                         color: Colors.black87,
                                                         fontSize: 20,
-                                                        fontWeight: FontWeight.w500,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                   ),
@@ -550,31 +558,37 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
-                                                  Padding(
-                                                    padding: EdgeInsets.only(left: 25),
+                                                  const Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 25),
                                                     child: Text(
                                                       "address  :",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 15,
-                                                          fontWeight: FontWeight.bold),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding:  EdgeInsets.only(left: 15),
+                                                    padding: const EdgeInsets.only(
+                                                        left: 15),
                                                     child: Text(
-                                                      snapshot.data["data"][index]["address"].toString(),
-                                                      style:  TextStyle(
+                                                      snapshot.data["data"]
+                                                              [index]["address"]
+                                                          .toString(),
+                                                      style: const TextStyle(
                                                         color: Colors.black87,
                                                         fontSize: 20,
-                                                        fontWeight: FontWeight.w500,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                   ),
@@ -583,37 +597,38 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                             ],
                                           ),
                                         ),
-
-
-
-
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding:  EdgeInsets.all(5),
+                                              padding: const EdgeInsets.all(5),
                                               child: ElevatedButton(
                                                   style: ButtonStyle(
                                                       backgroundColor:
-                                                      MaterialStateProperty.all<Color>(
-                                                          Color(0xff5ac18e)),
+                                                          MaterialStateProperty.all<Color>(
+                                                              const Color(
+                                                                  0xff5ac18e)),
                                                       shape: MaterialStateProperty.all<
-                                                          RoundedRectangleBorder>(
+                                                              RoundedRectangleBorder>(
                                                           RoundedRectangleBorder(
                                                               borderRadius:
-                                                              BorderRadius.circular(10))),
+                                                                  BorderRadius.circular(
+                                                                      10))),
                                                       minimumSize:
-                                                      MaterialStateProperty.all<Size>(
-                                                          Size(150, 60))),
+                                                          MaterialStateProperty.all<Size>(
+                                                              const Size(150, 60))),
                                                   onPressed: () {
-                                                    approvebooking(snapshot.data["data"][index]["booking_id"].toString());
-                                                    setState(() {
-
-                                                    });
+                                                    approvebooking(snapshot
+                                                        .data["data"][index]
+                                                            ["booking_id"]
+                                                        .toString());
+                                                    setState(() {});
                                                   },
-                                                  child:  Text(
+                                                  child: const Text(
                                                     "Accept",
-                                                    style: TextStyle(color: Colors.black),
+                                                    style: TextStyle(
+                                                        color: Colors.black),
                                                   )),
                                             ),
                                             // Padding(
@@ -644,26 +659,24 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
                                   ),
                                 ),
                               );
-
-                          }
-                        ),
+                            }),
                       );
-                    }if(snapshot.hasError){
+                    }
+                    if (snapshot.hasError) {
                       return const Text("Snapshot error");
                     } else {
-
-                      return const Center(child: Text("No work data available"));
+                      return const Center(
+                          child: Text("No work data available"));
                     }
                   }),
             ),
-             SizedBox(
+            const SizedBox(
               height: 30,
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
@@ -674,17 +687,16 @@ class _EmployeeHomePageState extends State<EmployeeHomePage> {
             );
           });
         },
-
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.library_books),
             label: 'Status',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
             label: 'Profile',
           ),

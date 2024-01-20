@@ -37,7 +37,6 @@ class _BookingSummeryState extends State<BookingSummery> {
       }
     }
 
-
     Map<String, dynamic> userData = {};
 
     Future<dynamic> getuserdata() async {
@@ -58,7 +57,6 @@ class _BookingSummeryState extends State<BookingSummery> {
 
     DateTime focusedDay = widget.focusedDay;
     return Scaffold(
-
       body: SafeArea(
         child: ListView(
           children: [
@@ -66,11 +64,12 @@ class _BookingSummeryState extends State<BookingSummery> {
               height: 40,
             ),
             Center(
-              child: Text("Booking Details", style:TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w800,
-                color: Colors.black.withOpacity(0.7),
-              )),
+              child: Text("Booking Details",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.black.withOpacity(0.7),
+                  )),
             ),
             const SizedBox(
               height: 30,
@@ -228,7 +227,8 @@ class _BookingSummeryState extends State<BookingSummery> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        snapshot.data["data"]["address"].toString(),
+                                        snapshot.data["data"]["address"]
+                                            .toString(),
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 18,
@@ -303,7 +303,6 @@ class _BookingSummeryState extends State<BookingSummery> {
                   }),
             ),
 
-
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 80),
               child: ElevatedButton(
@@ -319,17 +318,17 @@ class _BookingSummeryState extends State<BookingSummery> {
                 onPressed: () async {
                   final url1 = "${AppConstants.url}singleuserdataview.php";
 
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
                   String? user_id = prefs.getString("user_id");
 
-                  var response1 = await post(Uri.parse(url1), body: {"user_id": user_id});
+                  var response1 =
+                      await post(Uri.parse(url1), body: {"user_id": user_id});
                   var body1 = jsonDecode(response1.body);
 
                   if (response1.statusCode == 200) {
                     // print(response.body);
-                     body1 = jsonDecode(response1.body);
-
-
+                    body1 = jsonDecode(response1.body);
                   }
 
                   final url = "${AppConstants.url}booking.php";
@@ -349,7 +348,6 @@ class _BookingSummeryState extends State<BookingSummery> {
                   String? phone_number = body1['data']['phone_number'] ?? '';
                   String date =
                       "${widget.focusedDay.year}-${widget.focusedDay.month}-${widget.focusedDay.day}";
-
 
                   // Create the request body
                   var data = {

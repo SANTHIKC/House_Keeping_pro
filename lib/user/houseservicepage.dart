@@ -88,14 +88,12 @@ class _HouseServicepageState extends State<HouseServicepage> {
     }
   }
 
-
   int _currentIndex = 0;
 
-
-   List<Widget> _screens = [
-    HouseServicepage(),
-     ApprovebookingView(),
-    UserProfile(),
+  List<Widget> _screens = [
+    const HouseServicepage(),
+    const ApprovebookingView(),
+    const UserProfile(),
   ];
 
   @override
@@ -103,16 +101,18 @@ class _HouseServicepageState extends State<HouseServicepage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        title: Text(
+        title: const Text(
           "Home Shine",
-          style: TextStyle(color: Colors.black, fontStyle: FontStyle.normal,fontSize: 30,),
+          style: TextStyle(
+            color: Colors.black,
+            fontStyle: FontStyle.normal,
+            fontSize: 30,
+          ),
         ),
         backgroundColor: Colors.white24,
-
       ),
       resizeToAvoidBottomInset: false,
       drawer: Drawer(
-
         child: Column(
           children: [
             FutureBuilder(
@@ -124,71 +124,185 @@ class _HouseServicepageState extends State<HouseServicepage> {
                     );
                   }
                   if (snapshot.hasData) {
-                    return SizedBox(
-                      child: Container(
-                        color: const Color(0xcc5ac18e),
-                        width: double.infinity,
-
-                        height: 200,
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundImage: NetworkImage(
-                                  "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Text(
-                              snapshot.data["data"]["user_name"].toString(),
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            ),
-                            Text(
-                              snapshot.data["data"]["email"].toString(),
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 100,
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 50),
+                          child: Center(
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            "${AppConstants.url}/image/${snapshot.data["data"]["photo"]}"),
+                                        fit: BoxFit.fill),
+                                    border: Border.all(color: Colors.black26),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 50),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["user_name"].toString(),
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 50,
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data["data"]["email"],
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
                     );
                   } else {
                     return const Text("somthing went wrong");
                   }
                 }),
-            GestureDetector(
-              onTap: () {
-                // Handle the tap event here, like navigating to a different screen.
-                // For example:
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return UserProfile(); // Replace with the screen you want to navigate to.
-                }));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(8.0),
+
+            Column(
+              children: [
+                const SizedBox(
+                  height: 20,
                 ),
-                child: ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text(
-                    'Profile',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
+                GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) {
+                      return const UserProfile(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
+                    child: const ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text(
+                        'Profile',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
+                const SizedBox(
+                  height: 20,
+                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     // Handle the tap event here, like navigating to a different screen.
+                //     // For example:
+                //     Navigator.of(context)
+                //         .push(MaterialPageRoute(builder: (context) {
+                //       return UserProfile(); // Replace with the screen you want to navigate to.
+                //     }));
+                //   },
+                //   child: Container(
+                //
+                //     child: ListTile(
+                //       leading: Icon(Icons.settings),
+                //       title: Text(
+                //         'Settings',
+                //         style: TextStyle(
+                //           color: Colors.black,
+                //           fontSize: 20,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const ApprovebookingView(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
+                    child: const ListTile(
+                      leading: Icon(Icons.task_rounded),
+                      title: Text(
+                        'Status ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+
+                GestureDetector(
+                  onTap: () {
+                    // Handle the tap event here, like navigating to a different screen.
+                    // For example:
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const Signinhome(); // Replace with the screen you want to navigate to.
+                    }));
+                  },
+                  child: Container(
+                      child: const ListTile(
+                    leading: Icon(Icons.logout),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                  )),
+                ),
+              ],
+            )
             // GestureDetector(
             //   onTap: () {
             //     // Handle the tap event here, like navigating to a different screen.
@@ -203,9 +317,9 @@ class _HouseServicepageState extends State<HouseServicepage> {
             //       borderRadius: BorderRadius.circular(8.0),
             //     ),
             //     child: ListTile(
-            //       leading: Icon(Icons.settings),
+            //       leading: Icon(Icons.person),
             //       title: Text(
-            //         'Settings',
+            //         'Profile',
             //         style: TextStyle(
             //           color: Colors.black,
             //           fontSize: 20,
@@ -214,66 +328,62 @@ class _HouseServicepageState extends State<HouseServicepage> {
             //     ),
             //   ),
             // ),
-            GestureDetector(
-              onTap: () {
-                // Handle the tap event here, like navigating to a different screen.
-                // For example:
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return ApprovebookingView(); // Replace with the screen you want to navigate to.
-                }));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: ListTile(
-                  shape: Border.all(color: Colors.black12),
-                  leading: const Icon(Icons.task_rounded),
-                  title: const Text(
-                    'Status ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                // Handle the tap event here, like navigating to a different screen.
-                // For example:
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                  return Signinhome(); // Replace with the screen you want to navigate to.
-                }));
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child:  ListTile(
-                  leading: Icon(Icons.logout),
-                  title: Text(
-                    'Logout',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                )
-              ),
-            ),
-
-
-
-
+            //
+            // GestureDetector(
+            //   onTap: () {
+            //     // Handle the tap event here, like navigating to a different screen.
+            //     // For example:
+            //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            //       return ApprovebookingView(); // Replace with the screen you want to navigate to.
+            //     }));
+            //   },
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       border: Border.all(color: Colors.black12),
+            //       borderRadius: BorderRadius.circular(8.0),
+            //     ),
+            //     child: ListTile(
+            //       shape: Border.all(color: Colors.black12),
+            //       leading: const Icon(Icons.task_rounded),
+            //       title: const Text(
+            //         'Status ',
+            //         style: TextStyle(
+            //           color: Colors.black,
+            //           fontSize: 20,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // GestureDetector(
+            //   onTap: () {
+            //     // Handle the tap event here, like navigating to a different screen.
+            //     // For example:
+            //     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            //       return Signinhome(); // Replace with the screen you want to navigate to.
+            //     }));
+            //   },
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       border: Border.all(color: Colors.black12),
+            //       borderRadius: BorderRadius.circular(8.0),
+            //     ),
+            //     child:  ListTile(
+            //       leading: Icon(Icons.logout),
+            //       title: Text(
+            //         'Logout',
+            //         style: TextStyle(
+            //           color: Colors.black,
+            //           fontSize: 20,
+            //         ),
+            //       ),
+            //     )
+            //   ),
+            // ),
           ],
         ),
       ),
-      body:
-      SafeArea(
+      body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,7 +401,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
 
                       if (snapshot.hasData) {
                         return Container(
-                          height: 230,
+                          height: 170,
                           width: MediaQuery.of(context).size.width,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
@@ -347,7 +457,7 @@ class _HouseServicepageState extends State<HouseServicepage> {
                               const SizedBox(
                                 height: 10,
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.only(left: 15),
                                 child: Row(
                                   children: [
@@ -644,28 +754,26 @@ class _HouseServicepageState extends State<HouseServicepage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-
         currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
-             Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => _screens[index]),
             );
           });
         },
-
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.library_books),
             label: 'Booking',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
             label: 'Profile',
           ),

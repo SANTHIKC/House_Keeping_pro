@@ -33,7 +33,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
     request.fields["address"] = addresstextcontroller.text;
     request.fields["phone_number"] = phonenotextcontroller.text;
     request.fields["experience"] = experiencetextcontroller.text;
-    request.fields["service_type"] =dropdownValue;
+    request.fields["service_type"] = dropdownValue;
 
     request.files.add(MultipartFile.fromBytes(
         "photo", File(pickedImage!.path).readAsBytesSync(),
@@ -52,7 +52,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
         print("suceessfully added");
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) {
-            return Signinhome();
+            return const Signinhome();
           },
         ));
       }
@@ -78,8 +78,6 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
     });
   }
 
-
-
   var formkey = GlobalKey<FormState>();
   File? pickedImage;
 
@@ -93,32 +91,32 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
             color: Colors.white,
             height: 230,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
+                  const Text(
                     "Pic Image From",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ElevatedButton.icon(
                       onPressed: () {
                         pickImage(ImageSource.camera);
                       },
-                      icon: Icon(Icons.camera_alt),
-                      label: Text("Camera")),
+                      icon: const Icon(Icons.camera_alt),
+                      label: const Text("Camera")),
                   ElevatedButton.icon(
                       onPressed: () {
                         pickImage(ImageSource.gallery);
                       },
-                      icon: Icon(Icons.image),
-                      label: Text("Gallery")),
+                      icon: const Icon(Icons.image),
+                      label: const Text("Gallery")),
                 ],
               ),
             ),
@@ -144,7 +142,6 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -158,19 +155,21 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       Stack(
                         children: [
                           Container(
-                            decoration:BoxDecoration(
+                            decoration: BoxDecoration(
                               border: Border.all(width: 1),
-                              borderRadius: const BorderRadius.all(Radius.circular(90),),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(90),
+                              ),
                             ),
                             child: ClipOval(
-
-                              child  :
-                              pickedImage !=null ?Image.file(pickedImage!,
-                                width:170,
-                                height: 170,
-                                fit: BoxFit.cover,) :
-
-                              Image.asset('assetss/profilepic.jpg'),
+                              child: pickedImage != null
+                                  ? Image.file(
+                                      pickedImage!,
+                                      width: 170,
+                                      height: 170,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.asset('assetss/profilepic.jpg'),
                             ),
                           ),
                           Positioned(
@@ -178,22 +177,22 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                               right: 5,
                               child: IconButton(
                                 onPressed: imagePickerOption,
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.add_a_photo,
                                   size: 30,
                                 ),
                               ))
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("NAME"),
                       ),
                     ],
@@ -215,10 +214,10 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Email"),
                       ),
                     ],
@@ -235,17 +234,17 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "email",
-                        suffixIcon: Icon(Icons.email),
+                        suffixIcon: const Icon(Icons.email),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Password"),
                       ),
                     ],
@@ -253,8 +252,6 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-
-
                       controller: passwordtextcontroller,
                       obscureText: _isVisible ? false : true,
                       validator: (o) {
@@ -269,8 +266,9 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                         hintText: "password",
                         suffixIcon: IconButton(
                           onPressed: () => updateStatus(),
-                          icon:
-                          Icon(_isVisible ? Icons.visibility : Icons.visibility_off),
+                          icon: Icon(_isVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -278,10 +276,10 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("ADDRESS"),
                       ),
                     ],
@@ -303,10 +301,10 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Phone Number"),
                       ),
                     ],
@@ -326,17 +324,17 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       },
                       decoration: InputDecoration(
                         hintText: "Phone Number",
-                        suffixIcon: Icon(Icons.call),
+                        suffixIcon: const Icon(Icons.call),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Experience'),
                       ),
                     ],
@@ -359,10 +357,10 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: EdgeInsets.all(10),
                         child: Text("Service Type"),
                       ),
                     ],
@@ -375,7 +373,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                           borderRadius: BorderRadius.circular(10)),
                       child: DropdownButton(
                         dropdownColor: Colors.grey,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10)),
                         value: dropdownValue,
                         icon: const Icon(Icons.keyboard_arrow_down),
                         items: items.map((String item) {
@@ -407,7 +405,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                             senddata();
                           } else {}
                         },
-                        child: Text("Submit")),
+                        child: const Text("Submit")),
                   ),
                 ],
               ),

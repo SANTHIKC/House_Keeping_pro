@@ -30,41 +30,41 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
       return body;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
-                  padding:  EdgeInsets.only(left: 15),
+                  padding: const EdgeInsets.only(left: 15),
                   child: Text("  Status View",
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w800,
                         color: Colors.black.withOpacity(0.7),
                       ))),
-              SizedBox(
+              const SizedBox(
                 height: 22,
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: FutureBuilder(
-                    future:getuserdata() ,
-                    builder: (context,AsyncSnapshot<dynamic> snapshot) {
+                    future: getuserdata(),
+                    builder: (context, AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return  Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
-                      if (snapshot.hasData && snapshot.data.length!=0) {
-
-                        return SizedBox(height: MediaQuery.sizeOf(context).height/1.5,
+                      if (snapshot.hasData && snapshot.data.length != 0) {
+                        return SizedBox(
+                          height: MediaQuery.sizeOf(context).height / 1.5,
                           child: ListView.builder(
-                              itemCount:snapshot.data["data"].length,
-                              itemBuilder: (context,index) {
+                              itemCount: snapshot.data["data"].length,
+                              itemBuilder: (context, index) {
                                 return Padding(
                                   padding: const EdgeInsets.all(10),
                                   child: Container(
@@ -78,35 +78,43 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                                       padding: const EdgeInsets.all(10),
                                       child: Column(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 18,
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
-
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(left: 25),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 25),
                                                       child: Text(
                                                         "booking_id  :",
                                                         style: TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 15,
-                                                            fontWeight: FontWeight.bold),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding:  EdgeInsets.only(left: 15),
-                                                      child: Text(snapshot.data["data"][index]["booking_id"].toString(),
-
-                                                        style:  TextStyle(
+                                                      padding: const EdgeInsets.only(
+                                                          left: 15),
+                                                      child: Text(
+                                                        snapshot.data["data"]
+                                                                [index]
+                                                                ["booking_id"]
+                                                            .toString(),
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
-                                                          fontWeight: FontWeight.w500,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -116,30 +124,39 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
-
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(left: 25),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 25),
                                                       child: Text(
                                                         "emp_id  :",
                                                         style: TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 15,
-                                                            fontWeight: FontWeight.bold),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding:  EdgeInsets.only(left: 15),
-                                                      child: Text(snapshot.data["data"][index]["emp_id"].toString(),
-                                                        style:  TextStyle(
+                                                      padding: const EdgeInsets.only(
+                                                          left: 15),
+                                                      child: Text(
+                                                        snapshot.data["data"]
+                                                                [index]
+                                                                ["emp_id"]
+                                                            .toString(),
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
-                                                          fontWeight: FontWeight.w500,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -149,31 +166,38 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
-
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(left: 25),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 25),
                                                       child: Text(
                                                         "date  :",
                                                         style: TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 15,
-                                                            fontWeight: FontWeight.bold),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding:  EdgeInsets.only(left: 15),
-                                                      child: Text(snapshot.data["data"][index]["date"].toString(),
-
-                                                        style:  TextStyle(
+                                                      padding: const EdgeInsets.only(
+                                                          left: 15),
+                                                      child: Text(
+                                                        snapshot.data["data"]
+                                                                [index]["date"]
+                                                            .toString(),
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
-                                                          fontWeight: FontWeight.w500,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -185,63 +209,72 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                                           Column(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.all(8.0),
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
                                                 child: Row(
                                                   children: [
-                                                    Text(
+                                                    const Text(
                                                       "Servicetype : ",
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 15,
-                                                          fontWeight: FontWeight.bold),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                     SizedBox(
                                                       width: 210,
-                                                      child:  Text(
-
-                                                        snapshot.data["data"][index]["service_type"].toString(),
-                                                        style:  TextStyle(
+                                                      child: Text(
+                                                        snapshot.data["data"]
+                                                                [index]
+                                                                ["service_type"]
+                                                            .toString(),
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
-                                                          fontWeight: FontWeight.w500,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
-
                                                   ],
                                                 ),
                                               ),
-
                                             ],
                                           ),
-
-
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
-
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
-                                                      padding: EdgeInsets.only(left: 25),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 25),
                                                       child: Text(
                                                         "Status  :",
                                                         style: TextStyle(
                                                             color: Colors.black,
                                                             fontSize: 15,
-                                                            fontWeight: FontWeight.bold),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding:  EdgeInsets.only(left: 15),
-                                                      child: Text(snapshot.data["data"][index]["status"].toString(),
-
-                                                        style:  TextStyle(
+                                                      padding: const EdgeInsets.only(
+                                                          left: 15),
+                                                      child: Text(
+                                                        snapshot.data["data"]
+                                                                [index]
+                                                                ["status"]
+                                                            .toString(),
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
-                                                          fontWeight: FontWeight.w500,
+                                                          fontWeight:
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -250,52 +283,50 @@ class _ApprovebookingViewState extends State<ApprovebookingView> {
                                               ],
                                             ),
                                           ),
-
-
-
-
                                         ],
                                       ),
                                     ),
                                   ),
                                 );
-                              }
-                          ),
+                              }),
                         );
-                      } if(snapshot.hasError){
+                      }
+                      if (snapshot.hasError) {
                         return const Text("Snapshot error");
                       } else {
-
-                        return const Center(child: Text("No work data available"));
+                        return const Center(
+                            child: Text("No work data available"));
                       }
                     }),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
                   height: 50,
                   width: 250,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
-
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
                   child: ElevatedButton(
-
-                      style: ButtonStyle(backgroundColor:   MaterialStateProperty.all<Color>(
-                          Color(0xff5ac18e)),shape:MaterialStateProperty.all<
-                          RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius:
-                              BorderRadius.circular(10)))
-                      ),
-                      onPressed: (){
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color(0xff5ac18e)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10)))),
+                      onPressed: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) {
-                            return HouseServicepage();
+                            return const HouseServicepage();
                           },
                         ));
-                      }, child: Text("back to home page",style: TextStyle(fontSize: 20,color: Colors.black),))),
-
-
+                      },
+                      child: const Text(
+                        "back to home page",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ))),
             ],
           ),
         ),

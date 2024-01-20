@@ -15,7 +15,6 @@ class EmployeeOldWorks extends StatefulWidget {
 }
 
 class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
-
   Future<dynamic> getuserdata() async {
     final url = "${AppConstants.url}employeebookingstatusview.php";
 
@@ -31,6 +30,7 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
       return body;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Center(
@@ -49,7 +49,7 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                       color: Colors.black.withOpacity(0.7),
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Padding(
@@ -62,11 +62,11 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                           child: CircularProgressIndicator(),
                         );
                       }
-                      if (snapshot.hasData && snapshot.data.length!=0) {
+                      if (snapshot.hasData && snapshot.data.length != 0) {
                         return SizedBox(
                           height: MediaQuery.sizeOf(context).height / 1.5,
                           child: ListView.builder(
-                              itemCount: snapshot.data["data"].length ,
+                              itemCount: snapshot.data["data"].length,
                               itemBuilder: (context, index) {
                                 return Padding(
                                   padding: const EdgeInsets.all(10),
@@ -81,18 +81,18 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                       padding: const EdgeInsets.all(10),
                                       child: Column(
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 18,
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
+                                                    const Padding(
                                                       padding: EdgeInsets.only(
                                                           left: 25),
                                                       child: Text(
@@ -101,23 +101,23 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                            FontWeight
-                                                                .bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: const EdgeInsets.only(
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                        [index]
-                                                        ["booking_id"]
+                                                                [index]
+                                                                ["booking_id"]
                                                             .toString(),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                          FontWeight.w500,
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -127,14 +127,14 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
+                                                    const Padding(
                                                       padding: EdgeInsets.only(
                                                           left: 25),
                                                       child: Text(
@@ -143,23 +143,23 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                            FontWeight
-                                                                .bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: const EdgeInsets.only(
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                        [index]
-                                                        ["user_name"]
+                                                                [index]
+                                                                ["user_name"]
                                                             .toString(),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                          FontWeight.w500,
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -169,14 +169,14 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
+                                                    const Padding(
                                                       padding: EdgeInsets.only(
                                                           left: 25),
                                                       child: Text(
@@ -185,22 +185,22 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                            FontWeight
-                                                                .bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: const EdgeInsets.only(
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                        [index]["date"]
+                                                                [index]["date"]
                                                             .toString(),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                          FontWeight.w500,
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -210,14 +210,14 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
+                                                    const Padding(
                                                       padding: EdgeInsets.only(
                                                           left: 25),
                                                       child: Text(
@@ -226,23 +226,23 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                            FontWeight
-                                                                .bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: const EdgeInsets.only(
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                        [index]
-                                                        ["address"]
+                                                                [index]
+                                                                ["address"]
                                                             .toString(),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                          FontWeight.w500,
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -252,14 +252,14 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: EdgeInsets.all(8.0),
+                                            padding: const EdgeInsets.all(8.0),
                                             child: Column(
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
-                                                    Padding(
+                                                    const Padding(
                                                       padding: EdgeInsets.only(
                                                           left: 25),
                                                       child: Text(
@@ -268,23 +268,23 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                                             color: Colors.black,
                                                             fontSize: 15,
                                                             fontWeight:
-                                                            FontWeight
-                                                                .bold),
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     ),
                                                     Padding(
-                                                      padding: EdgeInsets.only(
+                                                      padding: const EdgeInsets.only(
                                                           left: 15),
                                                       child: Text(
                                                         snapshot.data["data"]
-                                                        [index]
-                                                        ["phone_number"]
+                                                                [index]
+                                                                ["phone_number"]
                                                             .toString(),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           color: Colors.black87,
                                                           fontSize: 20,
                                                           fontWeight:
-                                                          FontWeight.w500,
+                                                              FontWeight.w500,
                                                         ),
                                                       ),
                                                     ),
@@ -293,7 +293,6 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                                               ],
                                             ),
                                           ),
-                                          
                                         ],
                                       ),
                                     ),
@@ -302,35 +301,35 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
                               }),
                         );
                       } else {
-                        return Text("No data Entered");
+                        return const Text("No data Entered");
                       }
                     }),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
                   height: 65,
                   width: 250,
                   decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                      BoxDecoration(borderRadius: BorderRadius.circular(50)),
                   child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Color(0xff5ac18e)),
+                              const Color(0xff5ac18e)),
                           shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                  BorderRadius.circular(10)))),
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(10)))),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) {
-                            return EmployeeHomePage();
+                            return const EmployeeHomePage();
                           },
                         ));
                       },
-                      child: Text(
+                      child: const Text(
                         "back to home page",
                         style: TextStyle(fontSize: 20, color: Colors.black),
                       ))),
@@ -338,7 +337,6 @@ class _EmployeeOldWorksState extends State<EmployeeOldWorks> {
           ),
         ),
       ),
-
     );
   }
 }
