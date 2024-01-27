@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:house_keeping_pro/appConstants/appConstants.dart';
@@ -23,6 +24,7 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
   TextEditingController addresstextcontroller = TextEditingController();
   TextEditingController phonenotextcontroller = TextEditingController();
   TextEditingController experiencetextcontroller = TextEditingController();
+
 
   void senddata() async {
     var request = MultipartRequest(
@@ -48,7 +50,15 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
 
       print(gettngData.body);
       var empdata = jsonDecode(gettngData.body);
+      print(empdata);
+
       if (empdata["message"] == "Added") {
+        nametextcontroller.clear();
+        emailtextcontroller.clear();
+        passwordtextcontroller.clear();
+        addresstextcontroller.clear();
+        phonenotextcontroller.clear();
+        experiencetextcontroller.clear();
         print("suceessfully added");
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) {
@@ -373,7 +383,8 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                           borderRadius: BorderRadius.circular(10)),
                       child: DropdownButton(
                         dropdownColor: Colors.grey,
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
                         value: dropdownValue,
                         icon: const Icon(Icons.keyboard_arrow_down),
                         items: items.map((String item) {
@@ -398,11 +409,22 @@ class _EmployeeRegistrationState extends State<EmployeeRegistration> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(10),
-                    child: ElevatedButton(
-                        onPressed: () {
+                    child:
+
+
+                    ElevatedButton(
+                        onPressed: () async {
                           bool validate = formkey.currentState!.validate();
                           if (validate == true) {
-                            senddata();
+                            final ref = await FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                    email: emailtextcontroller.text,
+                                    password: passwordtextcontroller.text);
+                            if (ref.user?.uid != null) {
+                             senddata();
+
+                            }
+
                           } else {}
                         },
                         child: const Text("Submit")),

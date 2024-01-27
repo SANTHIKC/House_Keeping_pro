@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
@@ -41,6 +42,11 @@ class _UserRegistrationState extends State<UserRegistration> {
       var userdata=jsonDecode(gettngData.body);
       if(userdata["message"]=="Added")
       {
+        nametextcontroller.clear();
+        emailtextcontroller.clear();
+        passwordtextcontroller.clear();
+        addresstextcontroller.clear();
+        phonenotextcontroller.clear();
         print("userregisterdata added");
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
           return const Signinhome();
@@ -316,11 +322,18 @@ class _UserRegistrationState extends State<UserRegistration> {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async{
                           bool validate = formkey.currentState!.validate();
                           if(validate == true)
                           {
-                            senddata();
+                            final ref = await FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                email: emailtextcontroller.text,
+                                password: passwordtextcontroller.text);
+                            if (ref.user?.uid != null) {
+                              senddata();
+
+                            }
                           }
                           else
                           {

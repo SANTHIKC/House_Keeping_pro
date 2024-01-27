@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "526077748693",
+    "project_id": "homeshine-31551",
+    "storage_bucket": "homeshine-31551.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526077748693:android:d4b7964919f5645367095c",
+        "android_client_info": {
+          "package_name": "com.example.house_keeping_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-LKtiqPTD0i27DSS_Md8qiM2KoXH8WGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
